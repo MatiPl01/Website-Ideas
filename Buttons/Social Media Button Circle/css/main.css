@@ -1,0 +1,115 @@
+.share-circle {
+  width: 5rem;
+  height: 5rem;
+  z-index: 10;
+}
+
+.share-circle__share {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #607d8b;
+  border: 2px solid #112833;
+}
+
+.share-circle__items {
+  position: absolute;
+  margin: 0;
+  top: -5.1rem;
+  left: -5.1rem;
+  width: 15rem;
+  height: 15rem;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-transition-duration: .5s;
+          transition-duration: .5s;
+  border: 2px solid black;
+  -webkit-box-shadow: 0 0 0 2px white;
+          box-shadow: 0 0 0 2px white;
+  z-index: -1;
+  -webkit-transform: scale(0.25) rotate(-180deg);
+          transform: scale(0.25) rotate(-180deg);
+  opacity: 0;
+}
+
+.share-circle__items::before, .share-circle__items::after {
+  content: '';
+  position: absolute;
+  top: 49.5%;
+  left: 0;
+  width: 101%;
+  height: 2px;
+  background-color: #112833;
+}
+
+.share-circle__items::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.share-circle__items::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.share-circle__icon {
+  z-index: 1;
+  width: 2rem;
+  height: 2rem;
+  fill: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-55%, -55%);
+          transform: translate(-55%, -55%);
+  z-index: 1;
+}
+
+.share-circle__item {
+  list-style-type: none;
+  position: absolute;
+}
+
+.share-circle__item:first-child {
+  left: 50%;
+  top: 2.5rem;
+}
+
+.share-circle__item:nth-child(2) {
+  right: 2.5rem;
+  top: 50%;
+}
+
+.share-circle__item:nth-child(3) {
+  bottom: 2.5rem;
+  left: 50%;
+}
+
+.share-circle__item:last-child {
+  left: 2.5rem;
+  top: 50%;
+}
+
+.share-circle__item .share-circle__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: #112833;
+  -webkit-transition-duration: .5s;
+          transition-duration: .5s;
+}
+
+.share-circle__item .share-circle__icon:hover {
+  -webkit-transform: scale(1.5) translate(-42%, -45%);
+          transform: scale(1.5) translate(-42%, -45%);
+  fill: red;
+}
+
+.share-circle:hover .share-circle__items {
+  -webkit-transform: scale(1) rotate(0);
+          transform: scale(1) rotate(0);
+  opacity: 1;
+  -webkit-box-shadow: 0 0 0 2px white, 0 .5rem 3rem black;
+          box-shadow: 0 0 0 2px white, 0 .5rem 3rem black;
+}
+/*# sourceMappingURL=main.css.map */

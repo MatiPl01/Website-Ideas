@@ -1,0 +1,72 @@
+.split-text {
+  margin: 0;
+  padding: 0;
+  font-size: 6rem;
+  color: transparent;
+  text-transform: uppercase;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.split-text__part {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  overflow: hidden;
+  -webkit-transition-duration: .5s;
+          transition-duration: .5s;
+}
+
+.split-text__part--1 {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 45%, 0 55%);
+          clip-path: polygon(0 0, 100% 0, 100% 45%, 0 55%);
+}
+
+.split-text__part--2 {
+  -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 45%, 0 55%);
+          clip-path: polygon(0 100%, 100% 100%, 100% 45%, 0 55%);
+}
+
+.split-text__sub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scaleY(0);
+          transform: translate(-50%, -50%) scaleY(0);
+  -webkit-clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+          clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+  font-size: 2rem;
+  padding: 1rem;
+  width: 96%;
+  background-color: yellow;
+  text-align: center;
+  -webkit-transition-duration: .5s;
+          transition-duration: .5s;
+  color: black;
+  font-weight: 500;
+  letter-spacing: .4rem;
+  z-index: -1;
+}
+
+.split-text:hover .split-text__part--1 {
+  -webkit-transform: translateY(-1.8rem);
+          transform: translateY(-1.8rem);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 55%, 0 45%);
+          clip-path: polygon(0 0, 100% 0, 100% 55%, 0 45%);
+}
+
+.split-text:hover .split-text__part--2 {
+  -webkit-transform: translateY(1.8rem);
+          transform: translateY(1.8rem);
+  -webkit-clip-path: polygon(0 100%, 100% 100%, 100% 55%, 0 45%);
+          clip-path: polygon(0 100%, 100% 100%, 100% 55%, 0 45%);
+}
+
+.split-text:hover .split-text__sub {
+  -webkit-transform: translate(-50%, -50%) scaleY(1);
+          transform: translate(-50%, -50%) scaleY(1);
+  -webkit-clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
+          clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
+}
+/*# sourceMappingURL=main.css.map */

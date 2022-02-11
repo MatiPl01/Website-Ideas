@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parallax Spotlight</title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+    
+        * {
+            box-sizing: inherit;
+        }
+    
+        body {
+            margin: 0;
+            color: white;
+            background-color: #777;
+    
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+    
+            box-sizing: border-box;
+        }
+    </style>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    
+    <section>
+        <div class="focus"></div>
+    </section>
+
+    <script src="js/jquery.js"></script>
+    <script>
+
+        $(document).ready(() => {
+            $(document).on('mousemove', e => {
+                const X = e.clientX
+                const Y = e.clientY
+                $('.focus').css('background-image', 
+                    `radial-gradient(circle ${window.innerWidth/2}px at ${X}px ${Y}px, rgba(255,255,255,.1), black)`)
+            })
+        })
+
+    </script>
+</body>
+</html>

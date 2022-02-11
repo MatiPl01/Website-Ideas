@@ -1,0 +1,82 @@
+.phone-box {
+  position: relative;
+  width: 30rem;
+  height: 57.6rem;
+  display: block;
+  background-image: url(../img/phoneyt.jpg);
+  background-size: cover;
+  -webkit-transform: rotate(-45deg) skewY(25deg);
+          transform: rotate(-45deg) skewY(25deg);
+  -webkit-box-shadow: -2.5rem 4rem 4px rgba(0, 0, 0, 0.2);
+          box-shadow: -2.5rem 4rem 4px rgba(0, 0, 0, 0.2);
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+}
+
+.phone-box::before, .phone-box::after {
+  content: '';
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.phone-box::before {
+  left: -2.2rem;
+  width: 2.3rem;
+  height: 100%;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  background-color: #e62118;
+  border-top: 2rem solid #c31d11;
+  border-bottom: 46.5rem solid #fefefe;
+  -webkit-transform: skewY(-58deg);
+          transform: skewY(-58deg);
+}
+
+.phone-box::after {
+  bottom: -3.6rem;
+  left: 0;
+  width: 100%;
+  height: 3.6rem;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  background-color: #fefefe;
+  -webkit-transform: skewX(-32deg);
+          transform: skewX(-32deg);
+}
+
+.phone-box__glass {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+}
+
+.phone-box:hover {
+  -webkit-transform: rotate(-45deg) skewY(25deg) translate(2rem, -2rem);
+          transform: rotate(-45deg) skewY(25deg) translate(2rem, -2rem);
+  -webkit-box-shadow: -6rem 10rem 6rem rgba(0, 0, 0, 0.2);
+          box-shadow: -6rem 10rem 6rem rgba(0, 0, 0, 0.2);
+}
+
+.phone-box:hover .phone-box__glass {
+  opacity: 1;
+  -webkit-box-shadow: -2px 2px 1rem rgba(0, 0, 0, 0.2);
+          box-shadow: -2px 2px 1rem rgba(0, 0, 0, 0.2);
+}
+
+.phone-box:hover .phone-box__glass:first-child {
+  -webkit-transform: translate(3rem, -4rem);
+          transform: translate(3rem, -4rem);
+}
+
+.phone-box:hover .phone-box__glass:last-child {
+  -webkit-transform: translate(6rem, -8rem);
+          transform: translate(6rem, -8rem);
+}
+/*# sourceMappingURL=main.css.map */

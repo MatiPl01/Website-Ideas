@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image Comparison Slider on Mousemove</title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+    
+        * {
+            box-sizing: inherit;
+        }
+    
+        body {
+            margin: 0;
+            color: white;
+            background-color: #777;
+    
+            /* display: flex;
+            align-items: center;
+            justify-content: center; */
+
+            padding: 5%;
+            min-height: 100vh;
+            position: relative;
+    
+            box-sizing: border-box;
+        }
+    </style>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    
+    <section>
+        <div class="image-comparison image-comparison--horizontal">
+            <img src="img/img1.jpg" alt="Image 1" class="image-comparison__image image-comparison__image--1">
+            <img src="img/img2.jpg" alt="Image 2" class="image-comparison__image image-comparison__image--2">
+            <div class="image-comparison__slider">
+                <svg class="image-comparison__icon image-comparison__icon--left">
+                    <use xlink:href="img/icons.svg#icon-cheveron-left"></use>
+                </svg>
+                <svg class="image-comparison__icon image-comparison__icon--right">
+                    <use xlink:href="img/icons.svg#icon-cheveron-right"></use>    
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/jquery.js"></script>
+    <script>
+
+// console.log(document.querySelector(".image-comparison").offsetWidth)// - ADD TO NOTES
+// $('.image-comparison').outerWidth()
+
+        $(document).ready(() => {
+
+            const imgComparison = document.querySelector(".image-comparison")
+            const imgComparisonHorizClass = 'image-comparison--horizontal'
+
+            // SIZES
+            const imgComparisonWidth = imgComparison.offsetWidth
+            const imgComparisonHeight = imgComparison.offsetHeight
+
+            const moveSliderX = (X) => {
+                $('.image-comparison__image--2').css('clip-path',
+                    `polygon(0 0, ${X}px 0, ${X}px 100%, 0 100%)`)
+                $('.image-comparison__slider').css('left', X)
+            }
+
+            const moveSliderY = (Y) => {
+                $('.image-comparison__image--2').css('clip-path',
+                    `polygon(0 0, 100% 0, 100% ${Y}px, 0 ${Y}px)`)
+                $('.image-comparison__slider').css('top', Y - imgComparisonHeight / 2)
+            }
+
+            const moveSlider = (offsetX, offsetY) => {
+                if (offsetX > 0 &&
+                    offsetX < imgComparisonWidth &&
+                    offsetY > 0 &&
+                    offsetY < imgComparisonHeight) {
+                        if (imgComparison.className.includes(imgComparisonHorizClass)) moveSliderY(offsetY)
+                        else moveSliderX(offsetX)
+                }
+            }
+                    
+
+            $('.image-comparison').on({
+                mousedown: e => moveSlider(e),
+                drag: e => {
+                    if (e.which === 1) moveSlider(e.offsetX, e.offsetY)             
+                },
+                dragover: e => {
+                    e.preventDefault()
+                },
+            })
+        })
+
+
+    </script>
+</body>
+</html>

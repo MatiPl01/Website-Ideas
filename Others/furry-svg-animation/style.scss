@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: black;
+    overflow-x: hidden;
+    max-width: 100vw;
+
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #E6D7A9, #F9A624 35%, black)
+}
+
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
+$furry-width: 50rem;
+
+.furry {
+    width: $furry-width;
+    position: relative;
+
+    filter: drop-shadow(0 0 1rem rgba(black, .3))
+            drop-shadow(0 0 3rem rgba(black, .1));
+    
+    animation: jump .75s infinite alternate ease-in-out;
+
+    &__shadow {
+        background: radial-gradient(rgba(black, .3), transparent 70%);
+        width: 80%;
+        height: $furry-width / 20 * 3;
+        margin: 0 auto;
+        animation: move-shadow .75s infinite alternate  ease-in-out;
+        transform: translateY(-2rem);
+    }
+
+    &__face {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        overflow: visible;
+
+        .furry {
+            &__eye {
+                &, > * { position: absolute; }
+
+                top: 0;
+                width: $furry-width / 5;
+        
+                &--left {
+                    left: -$furry-width/9.5;
+                    transform: translate(-50%, -$furry-width/5);
+                }
+
+                &--right {
+                    right: -$furry-width/9.5;
+                    transform: translate(50%, -$furry-width/5) rotateY(180deg);
+                }
+
+
+                &--shadow {
+                    transform: scale(1.25);
+                }
+
+                &--cornea {
+                    transform: scale(.55) translate(30%, -10%); // X: -40% - 40%    Y: -40% - 50%
+                    animation: move-eye-cornea .75s infinite alternate;
+                }
+
+                &--pupil {
+                    transform: scale(.35) translate(65%, -10%);
+                    animation: move-eye-pupil .75s infinite alternate;
+                }
+
+                &--flash {
+                    transform: scale(.18) translate(140%, -135%) rotateY(180deg);
+                    animation: move-eye-flash .75s infinite alternate;
+                }
+            }
+
+            &__nose {
+                position: absolute;
+                width: $furry-width/10;
+                top: $furry-width/15;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+    &.eyes-centered {
+        .furry__eye {
+            &--cornea { transform: scale(.55) !important; }
+            &--pupil  { transform: scale(.35) !important; }
+            &--flash  { transform: scale(.18) !important; }
+        }
+    }
+}
+
+@keyframes jump {
+    to { transform: translateY(-7rem); }
+}
+
+@keyframes move-shadow {
+    to { transform: translateY(6rem) scale(.8); }
+}
+
+@keyframes move-eye-cornea {
+    to { transform: scale(.55) translate(20%, 40%); }
+}
+
+@keyframes move-eye-pupil {
+    to { transform: scale(.35) translate(40%, 130%); }
+}
+
+@keyframes move-eye-flash {
+    to { transform: scale(.2) rotateY(180deg) translate(-60%, 25%); }
+}
+
+.stop-anim {
+    &, * { animation-play-state: paused !important; }
+}

@@ -1,0 +1,63 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  max-width: 100vw;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  background: radial-gradient(red, black) black;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.canvas {
+  position: absolute;
+  background: transparent;
+  width: 100vw;
+  height: 100vw;
+  max-width: 100rem;
+  max-height: 100rem;
+  bottom: 0;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.generate-tree-button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 100rem;
+  padding: 2rem 4rem;
+  font-size: 2.2rem;
+  color: white;
+  background-color: red;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  left: 50%;
+  bottom: 5rem;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  position: absolute;
+  white-space: nowrap;
+  -webkit-transition: all .1s;
+  transition: all .1s;
+}
+
+.generate-tree-button:hover {
+  -webkit-transform: scale(1.01) translate(-50%, -2px);
+          transform: scale(1.01) translate(-50%, -2px);
+}
+
+.generate-tree-button:active {
+  -webkit-transform: scale(0.99) translate(-50%, 1px);
+          transform: scale(0.99) translate(-50%, 1px);
+}
+/*# sourceMappingURL=main.css.map */

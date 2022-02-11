@@ -1,0 +1,351 @@
+html {
+  font-size: 62.5%;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+$yellow: #f1c40f;
+$lime: #76c900;
+$navy: #0a4069;
+$cyan: #57caf4;
+$red: #ec008c;
+$white: #fefefe;
+$gray: #444;
+$lightGray: lighten($gray, 30);
+
+$faceColor: rgba($white, .2);
+$growColor: rgba($red, .6);
+
+$side-size: 5rem;  
+$bar-rotation: rotateX(40deg) rotateY(0deg) rotateZ(0);
+$transitionDuration: .3s;
+$transition: all $transitionDuration ease-in-out;
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1rem;
+
+    text-align: center;
+
+    color: $gray;
+    background: #d0d0d0;
+}
+
+input {
+    display: none;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    padding: 0;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    article {
+        align-self: center;
+        width: 40rem;
+        margin-bottom: 2rem;
+
+        p, 
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+p {
+    line-height: 1.5rem;
+
+    max-width: 40rem;
+    margin: 1.5rem auto 2rem;
+    padding-bottom: 1.5rem;
+
+    span {
+        display: block;
+    }
+}
+.container {
+    z-index: 1;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+
+    justify-content: center;
+
+    margin-bottom: 4rem;
+}
+
+/*
+** START // CHART'S RULES
+*/
+.chart {
+    font-size: 1rem;
+
+    perspective: 100rem;
+    perspective-origin: center;
+    backface-visibility: hidden;
+}
+
+.bar {
+    position: relative;
+
+    height: 20rem;
+
+    transition: $transition;
+    transform: $bar-rotation;
+
+    transform-style: preserve-3d;
+
+    .face
+    {
+        position: relative;
+
+        width: 100%;
+        height: $side-size;   
+
+        background-color: $faceColor;
+
+        &.side-a,
+        &.side-b {
+            width: $side-size;   
+        }
+    }
+    .side-a
+    {
+        transform: rotateX(90deg) rotateY(-90deg) translateX($side-size) translateY($side-size/2) translateZ($side-size/2);
+    }
+    .side-b
+    {
+        transform: rotateX(90deg) rotateY(-90deg) translateX($side-size * 2) translateY($side-size/2) translateZ(-$side-size/2);
+        position: absolute;
+        right: 0;
+    }
+    .side-0
+    {
+        transform: rotateX(90deg) rotateY(0) translateX(0) translateY($side-size/2) translateZ(-$side-size/2);
+    }
+    .side-1
+    {
+        transform: rotateX(90deg) rotateY(0) translateX(0) translateY($side-size/2) translateZ($side-size * 1.5);
+    }
+    .top
+    {
+        transform: rotateX(0deg) rotateY(0) translateX(0) translateY($side-size * 2) translateZ($side-size);
+    }
+    .floor
+    {
+        box-shadow: 0 .1rem 0.6rem rgba(0,0,0,.3), .6rem -0.5rem 3rem rgba(0,0,0,.3), 1rem -1rem 8rem $white;
+    }
+}
+
+.growing-bar {
+    transition: $transition;
+    background-color: $growColor;
+    width: 100%;
+    height: $side-size;
+}
+
+@mixin drawSkin($color, $name) {
+    // It's used later with @extend
+    .bar.#{$name} {
+        .side-a,
+        .growing-bar {
+            background-color: rgba($color, .6);
+        }
+        .side-0 .growing-bar {
+            box-shadow: -0.5rem -1.5rem 4rem $color;
+        }
+        .floor .growing-bar {
+            box-shadow: 0rem 0rem 2rem $color;
+        }
+    }
+}
+
+@include drawSkin(rgba($yellow, .8), 'yellow');
+@include drawSkin(rgba($red, .8), 'red');
+@include drawSkin($cyan, 'cyan');
+@include drawSkin(rgba($navy, .8), 'navy');
+@include drawSkin($lime, 'lime');
+@include drawSkin($white, 'white');
+@include drawSkin($gray, 'gray');
+
+
+@for $i from 0 to 101
+{
+    .bar-#{$i}
+    {
+        .growing-bar
+        {
+            width: percentage($i/100);
+        }
+    }
+}
+
+/*
+END // CHART'S RULES
+*
+*
+*/
+
+/////////////////////
+.chart.flex {
+    display: flex;
+
+    .bar {
+        margin: 0 .5rem;
+        flex: 1;
+
+        &:nth-child(2) {
+            z-index: 1;
+        }
+        &:first-child {
+            z-index: 2;
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+/////////////////////
+
+.actions {
+    display: flex;
+
+    justify-content: center;
+
+    margin-bottom: 0;
+    padding-bottom: 2rem;
+    border-bottom: 1px dotted rgba($gray, .4);
+
+    label {
+        box-sizing: border-box;
+        padding: 1rem;
+        margin: 0 .2rem;
+
+        cursor: pointer;
+        transition: all .15s ease-in-out;
+
+        color: $navy;
+        border: 1px solid rgba($white, .6);
+
+        flex: 1;
+        
+        &:first-child {
+            margin-left: 0;
+            border-radius: .5rem 0 0 .5rem;
+        }
+
+        &:last-child {
+            margin-right: 0;
+            border-radius: 0 .5rem .5rem 0;
+        }
+    }
+}
+
+
+
+input[id='exercise-1']:checked ~ .actions label[for='exercise-1'],
+input[id='exercise-2']:checked ~ .actions label[for='exercise-2'],
+input[id='exercise-3']:checked ~ .actions label[for='exercise-3'],
+input[id='exercise-4']:checked ~ .actions label[for='exercise-4'],
+
+input[id='pos-0']:checked ~ .actions label[for='pos-0'],
+input[id='pos-1']:checked ~ .actions label[for='pos-1'],
+input[id='pos-2']:checked ~ .actions label[for='pos-2'],
+input[id='pos-3']:checked ~ .actions label[for='pos-3'],
+
+input[id='red']:checked ~ .actions label[for='red'],
+input[id='cyan']:checked ~ .actions label[for='cyan'],
+input[id='lime']:checked ~ .actions label[for='lime'] {
+    color: $lime;
+    border: 1px solid darken($navy, 15);
+    background-color: $navy;
+}
+
+
+input[id='red']:checked ~ .chart {
+    @extend .bar.red;
+}
+input[id='cyan']:checked ~ .chart {
+    @extend .bar.cyan;
+}
+input[id='lime']:checked ~ .chart {
+    @extend .bar.lime;
+}
+
+input[id='pos-0']:checked ~ .chart {
+    @extend .bar-25;
+}
+input[id='pos-1']:checked ~ .chart {
+    @extend .bar-50;
+}
+input[id='pos-2']:checked ~ .chart {
+    @extend .bar-75;
+}
+input[id='pos-3']:checked ~ .chart {
+    @extend .bar-100;
+}
+input[id='exercise-2']:checked ~ .chart.flex
+{   
+     .bar {
+        &:nth-child(1) {
+            flex: 1;
+            @extend .bar-20;
+        }
+        &:nth-child(2) {
+            flex: 1;
+            @extend .bar-50;
+        }
+        &:nth-child(3) {
+            flex: 1 0 30%;
+            @extend .bar-80;
+        }
+    }
+}
+input[id='exercise-3']:checked ~ .chart.flex
+{
+    .bar
+    {
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3)
+        {
+            flex: 1;
+            @extend .bar-70;
+        }
+    }
+}
+input[id='exercise-4']:checked ~ .chart.flex
+{
+    .bar
+    {
+        &:nth-child(1),
+        &:nth-child(2)
+        {
+            flex: 1 0 30%;
+            @extend .bar-50;
+        }
+        &:nth-child(3)
+        {
+            flex: 1;
+            @extend .bar-100;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

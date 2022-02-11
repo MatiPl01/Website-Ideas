@@ -1,0 +1,78 @@
+.animate span {
+  display: block;
+  position: relative;
+  text-align: center;
+}
+
+.animate.backwards > span {
+  -webkit-animation: animateBackwards 1s ease-in-out forwards;
+          animation: animateBackwards 1s ease-in-out forwards;
+}
+
+.animate.forwards > span {
+  -webkit-animation: animateForwards 1s ease-in-out forwards;
+          animation: animateForwards 1s ease-in-out forwards;
+}
+
+.animate.mixed > span:nth-child(even) {
+  -webkit-animation: animateBackwards 1s ease-in-out forwards;
+          animation: animateBackwards 1s ease-in-out forwards;
+}
+
+.animate.mixed > span:nth-child(odd) {
+  -webkit-animation: animateForwards 1s ease-in-out forwards;
+          animation: animateForwards 1s ease-in-out forwards;
+}
+
+@-webkit-keyframes animateForwards {
+  from {
+    top: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    top: .9em;
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+  }
+}
+
+@keyframes animateForwards {
+  from {
+    top: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    top: .9em;
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+  }
+}
+
+@-webkit-keyframes animateBackwards {
+  from {
+    top: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    top: 1em;
+    -webkit-transform: rotate(25deg);
+            transform: rotate(25deg);
+  }
+}
+
+@keyframes animateBackwards {
+  from {
+    top: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    top: 1em;
+    -webkit-transform: rotate(25deg);
+            transform: rotate(25deg);
+  }
+}
+/*# sourceMappingURL=main.css.map */

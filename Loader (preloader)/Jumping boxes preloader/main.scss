@@ -1,0 +1,74 @@
+$duration: 1.5s;
+$container-size: 25rem;
+$box-size: 3.3rem;
+$box-border-radius: 25%;
+$loader-color-main: #1C9FFF;
+
+.loader {
+	width: $container-size;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+    position: relative;
+    
+    &__box {
+        width: $box-size;
+        height: $box-size;
+        position: relative;
+        transform-origin: -50% center;
+        border-radius: $box-border-radius;
+        
+        &:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: $box-border-radius;
+            box-shadow: 0 0 1rem rgba($loader-color-main, .5);
+        }
+        
+        &:nth-child(1) {
+            animation: slide $duration ease-in-out infinite alternate;
+            &:after { animation: color-change $duration ease-in-out infinite alternate; }
+        }
+        
+        @for $i from 1 to 5 {
+            &:nth-child(#{$i + 1}) {	
+                animation: flip-#{$i} $duration ease-in-out infinite alternate;
+                &:after { animation: squidge-#{$i} $duration ease-in-out infinite alternate; }
+            }
+        }
+        
+        &:nth-child(2):after { background-color: $loader-color-main; }
+        &:nth-child(3):after { background-color: lighten($loader-color-main, 8%); }	
+        &:nth-child(4):after { background-color: lighten($loader-color-main, 16%); }
+        &:nth-child(5):after { background-color: lighten($loader-color-main, 24%); }
+    }
+}
+
+
+
+@keyframes slide {
+	from { background-color: $loader-color-main; transform: translateX(0); }
+	to { background-color: lighten($loader-color-main, 24%); transform: translateX($container-size - $box-size * 1.25); }
+}
+
+@keyframes color-change {
+    from { background-color: $loader-color-main; }
+	to { background-color: lighten($loader-color-main, 30%); }
+}
+
+@for $i from 1 to 5 {	
+    @keyframes flip-#{$i} {
+      0%, #{$i * 15}% { transform: rotate(0); }  
+      #{$i * 15 + 20}%, 100% { transform: rotate(-180deg); }
+    }
+	
+	@keyframes squidge-#{$i} {
+		#{$i * 15 - 10}% { transform-origin: center bottom; transform: scaleX(1) scaleY(1); }
+		#{$i * 15}% { transform-origin: center bottom; transform: scaleX(1.3) scaleY(0.7); }
+		#{$i * 15 + 10}%, #{$i * 15 + 5}% { transform-origin: center bottom; transform: scaleX(0.8) scaleY(1.4); }
+		#{$i * 15 + 40}%, 100% { transform-origin: center top; transform: scaleX(1) scaleY(1); }
+		#{$i * 15 + 25}% { transform-origin: center top; transform: scaleX(1.3) scaleY(0.7); }
+	}
+}

@@ -1,0 +1,64 @@
+$phone-transition-duration: .4s;
+
+.phone-box {
+    position: relative;
+    width: 30rem;
+    height: 57.6rem;
+    display: block;
+    background-image: url(../img/phoneyt.jpg);
+    background-size: cover;
+    transform: rotate(-45deg) skewY(25deg);
+    box-shadow: -2.5rem 4rem 4px rgba(black, .2);
+    transition-duration: $phone-transition-duration;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+        backface-visibility: hidden;
+    }
+
+    &::before {
+        left: -2.2rem;
+        width: 2.3rem;
+        height: 100%;
+        transform-origin: right;
+        background-color: #e62118;
+        border-top: 2rem solid #c31d11;
+        border-bottom: 46.5rem solid #fefefe;
+        transform: skewY(-58deg);
+    }
+
+    &::after {
+        bottom: -3.6rem;
+        left: 0;
+        width: 100%;
+        height: 3.6rem;
+        transform-origin: top;
+        background-color: #fefefe;
+        transform: skewX(-32deg);
+    }
+
+    &__glass {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(white, .1);
+        opacity: 0;
+        transition-duration: $phone-transition-duration;
+    }
+
+    &:hover {
+        transform: rotate(-45deg) skewY(25deg) translate(2rem, -2rem);
+        box-shadow: -6rem 10rem 6rem rgba(black, .2);
+    }
+
+    &:hover &__glass {
+        opacity: 1;
+        box-shadow: -2px 2px 1rem rgba(black, .2);
+
+        &:first-child { transform: translate(3rem, -4rem); }
+        &:last-child { transform: translate(6rem, -8rem); }
+    }
+}

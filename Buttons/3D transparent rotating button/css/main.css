@@ -1,0 +1,86 @@
+.button__3D {
+  position: relative;
+  width: 15rem;
+  height: 5rem;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 50rem;
+          perspective: 50rem;
+}
+
+.button__3D--text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+  text-transform: uppercase;
+  font-size: 2.2rem;
+  letter-spacing: .2rem;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-transition-duration: .5s;
+          transition-duration: .5s;
+  border: 2px solid black;
+  -webkit-box-shadow: inset 0 1rem 2rem rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  -webkit-transform-origin: center center -2.5rem;
+          transform-origin: center center -2.5rem;
+}
+
+.button__3D--text:first-child {
+  -webkit-transform: rotateX(0);
+          transform: rotateX(0);
+}
+
+.button__3D--text:nth-child(2) {
+  -webkit-transform: rotateX(-90deg);
+          transform: rotateX(-90deg);
+}
+
+.button__3D--text:nth-child(3) {
+  -webkit-transform: rotateX(-180deg);
+          transform: rotateX(-180deg);
+}
+
+.button__3D--text:last-child {
+  -webkit-transform: rotateX(-270deg);
+          transform: rotateX(-270deg);
+}
+
+.button__3D:hover .button__3D--text {
+  color: white;
+  background-color: rgba(3, 169, 244, 0.7);
+}
+
+.button__3D:hover .button__3D--text:first-child {
+  -webkit-transform: rotateX(360deg);
+          transform: rotateX(360deg);
+}
+
+.button__3D:hover .button__3D--text:nth-child(2) {
+  -webkit-transform: rotateX(270deg);
+          transform: rotateX(270deg);
+}
+
+.button__3D:hover .button__3D--text:nth-child(3) {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.button__3D:hover .button__3D--text:last-child {
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+}
+/*# sourceMappingURL=main.css.map */

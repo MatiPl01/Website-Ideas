@@ -1,0 +1,66 @@
+.card {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 30rem;
+  height: 40rem;
+  background-color: #001e2d;
+  color: white;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5);
+  padding: 1.5rem;
+  position: relative;
+}
+
+.card__content {
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+  border: 2px solid #ffeb3b;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.card__title {
+  font-size: 3rem;
+}
+
+.card__text {
+  font-size: 1.5rem;
+}
+
+.card svg,
+.card svg rect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+}
+
+.card rect {
+  stroke: #0093ff;
+  stroke-width: 4;
+  stroke-dasharray: 350;
+  -webkit-animation: animate-stroke 3s linear infinite;
+          animation: animate-stroke 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stroke {
+  from {
+    stroke-dashoffset: 700;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes animate-stroke {
+  from {
+    stroke-dashoffset: 700;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="btn-rotate test">
+        <div class="btn-front">Sprawdź się</div>
+        <div class="btn-back">
+            <div class="btn-back__query btn-back__query--1" data-shown="false">
+                <p>Czy chcesz rozwiązać test?</p>
+                <button class="btn yes">Tak</button>
+                <button class="btn no">Nie</button>
+            </div>
+            <div class="btn-back__query btn-back__query--2" data-shown="true">
+                <div class="count">
+                    <p class="count__text">
+                        Tekst składa się z
+                        <span class="count__text--num">12</span>
+                        pytań
+                    </p>
+                </div>
+                <div class="choice">
+                    <span class="choice__text">Wybierz liczbę pytań</span>
+                    <input class="choice__input" type="number" min="3" max="12" name="num-queries" value="12">
+                </div>
+                <button class="btn btn--random">Losuj</button>
+            </div>
+            <form class="form" method="GET" data-finished="false" id="test1">
+                <header class="form__header">
+                    <h2 class="form__title">Pochodne cząstkowe</h2>
+                    <div class="counter">
+                        <span class="counter__text">Pytania</span>
+                        <span class="counter__number counter__number--current">2</span>
+                        <span class="counter__number--sep">/</span>
+                        <span class="counter__number counter__number--max">3</span>
+                    </div>
+                </header>
+                
+                <div class="form__issues">
+                    <div class="close__btn">
+                        <span class="close__btn--line"></span>
+                        <span class="close__btn--line"></span>
+                    </div>
+
+                    <div class="result__box">
+                        <div class="result__info" data-score="80">
+                            <h2 class="result__title">Wyśmienicie!</h2>
+                            <p class="result__message">Materiał został przez Ciebie opanowany do perfekcji</p>
+                        </div>
+                        <div class="result__info" data-score="60">
+                            <h2 class="result__title">Bardzo dobrze!</h2>
+                            <p class="result__message">Wiesz wystarczająco duzo, aby przejść do kolejnej sekcji</p>
+                        </div>
+                        <div class="result__info" data-score="40">
+                            <h2 class="result__title">Nie jest źle</h2>
+                            <p class="result__message">Poćwicz jeszcze trochę przed przejściem dalej</p>
+                        </div>
+                        <div class="result__info" data-score="20">
+                            <h2 class="result__title">Mogło być lepiej</h2>
+                            <p class="result__message">Postaraj się powtórzyć niektóre zagadnienia. Jeżeli poczujesz się na siłach, przejdź dalej.</p>
+                        </div>
+                        <div class="result__info" data-score="0">
+                            <h2 class="result__title">Spróbuj jeszcze raz</h2>
+                            <p class="result__message">Niestety nie udało Ci się udzielić poprawnej odpowiedzi na większość pytań. Nie załamuj się i przeanalizuj materiał jeszcze raz.</p>
+                        </div>
+
+                        <hr>
+                        <div class="mark__box">
+                            <span class="mark__title">Twój wynik:</span>
+                            <span class="mark__percent">45%</span>
+                            <div class="mark__points">
+                                <span class="mark__points--gained">6</span>
+                                <span class="mark__points--sep">/</span>
+                                <span class="mark__points--max">7</span>
+                                pt.
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+
+                    <div class="form__issues--container">
+                        <div class="form__issue" data-active="false">
+                            <p class="form__question">Ile wynosi pochodna ...?</p>
+                            <div class="form__answers">
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query1" value="A"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">2x + 4</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query1" value="B"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">3x - 4</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query1" value="C"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">xfdafdaf</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query1" value="D"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">-x + 2</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form__issue" data-active="false">
+                            <p class="form__question">Pytanie 2</p>
+                            <div class="form__answers">
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query2" value="A"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">sadas</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query2" value="B"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">fda</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query2" value="C"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">gds</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query2" value="D"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">gfsfg</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form__issue" data-active="false">
+                            <p class="form__question">Pytanie 3</p>
+                            <div class="form__answers">
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query3" value="A"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">321321</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query3" value="B"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">213</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query3" value="C"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">2213</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query3" value="D"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">2331</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form__issue" data-active="false">
+                            <p class="form__question">Pytanie 4 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat aliquid soluta animi libero doloremque voluptates velit suscipit recusandae nostrum eaque saepe nemo ducimus, obcaecati natus praesentium ut nobis minus, facere in! Molestiae praesentium velit consequatur magni nulla accusamus fugiat facere tenetur tempora pariatur minima doloremque quo veniam, itaque, aliquid inventore?</p>
+                            <div class="form__answers">
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query4" value="A"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">ggg</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query4" value="B"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">fff</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query4" value="C"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">ddd</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query4" value="D"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">34234</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form__issue" data-active="false">
+                            <p class="form__question">Pytanie 5 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit molestias, a quam modi assumenda enim illo, quaerat fugiat, quae corporis corrupti molestiae quod autem doloribus ducimus quia totam dolorum nam? Odit minus ut itaque assumenda eveniet laudantium a porro unde!</p>
+                            <div class="form__answers">
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query5" value="A"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">ggg</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query5" value="B"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">fff</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query5" value="C"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">ddd</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query5" value="D"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">34234</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form__issue" data-active="false">
+                            <p class="form__question">Pytanie 6 321123</p>
+                            <div class="form__answers">
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query6" value="A"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">ggg</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query6" value="B"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">fff</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query6" value="C"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">ddd</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query6" value="D"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">34234</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form__issue" data-active="false">
+                            <p class="form__question">Pytanie 7 32112312</p>
+                            <div class="form__answers">
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query7" value="A"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">ggg</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query7" value="B"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">fff</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query7" value="C"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">ddd</span>
+                                </label>
+                                <label class="answer">
+                                    <input class="answer__radio answer__radio--hidden" type="radio" name="query7" value="D"/>
+                                    <svg viewBox="0 0 44 44" class="answer__radio answer__radio--visible">
+                                        <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                                    </svg>
+                                    <span class="answer__text">34234</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="nav">
+                    <button class="nav__btn btn btn6" data-redirect="prev">Poprzednie</button>
+                    <button class="nav__btn btn btn4" data-redirect="end">Zakończ</button>
+                    <button class="nav__btn btn btn5" data-redirect="next">Następne</button>
+                </nav> 
+
+            </form>
+        </div>
+    </div>
+
+    <script src="jQuery.min.js"></script>
+    <script>
+    
+    const btn = $('.btn-rotate')
+
+    const btnFront = $('.btn-front'),
+          btnYes = $('.btn-back .yes'),
+          btnNo = $('.btn-back .no'),
+          btnClose = $('.close__btn')
+
+
+
+    btnFront.on('click', e => {
+        const offset = $(e.target).offset(),
+              mx = e.clientX - offset.left,
+              my = e.clientY - offset.top;
+
+        const w = btn.width(),
+            h = btn.height()
+            
+        const directions = [
+            { id: 'top', x: w/2, y: 0 },
+            { id: 'right', x: w, y: h/2 },
+            { id: 'bottom', x: w/2, y: h },
+            { id: 'left', x: 0, y: h/2 }
+        ];
+        
+        directions.sort((a,b) => {
+            return distance( mx, my, a.x, a.y ) - distance( mx, my, b.x, b.y );
+        } );
+        
+        btn.attr('data-direction', directions.shift().id);
+        btn.addClass('is-open');
+    })
+
+    const distance = (x1, y1, x2, y2) => {
+        const dx = x1-x2;
+        const dy = y1-y2;
+        return Math.sqrt(dx*dx + dy*dy);
+    };
+
+
+
+
+
+    const testObj = {
+        "test1": {
+            "title": "",
+            "queries": {
+                "query1": {
+                    "query": "",
+                    "answers": {
+                        "A": "",
+                        "B": "",
+                        "C": "",
+                        "D": ""
+                    },
+                    "correct": "B"
+                },
+                "query2": {
+                    "query": "",
+                    "answers": {
+                        "A": "",
+                        "B": "",
+                        "C": "",
+                        "D": ""
+                    },
+                    "correct": "A"
+                },
+                "query3": {
+                    "query": "",
+                    "answers": {
+                        "A": "",
+                        "B": "",
+                        "C": "",
+                        "D": ""
+                    },
+                    "correct": "C"
+                },
+                "query4": {
+                    "query": "",
+                    "answers": {
+                        "A": "",
+                        "B": "",
+                        "C": "",
+                        "D": ""
+                    },
+                    "correct": "A"
+                },
+                "query5": {
+                    "query": "",
+                    "answers": {
+                        "A": "",
+                        "B": "",
+                        "C": "",
+                        "D": ""
+                    },
+                    "correct": "D"
+                },
+                "query6": {
+                    "query": "",
+                    "answers": {
+                        "A": "",
+                        "B": "",
+                        "C": "",
+                        "D": ""
+                    },
+                    "correct": "A"
+                },
+                "query7": {
+                    "query": "",
+                    "answers": {
+                        "A": "",
+                        "B": "",
+                        "C": "",
+                        "D": ""
+                    },
+                    "correct": "B"
+                }
+            }
+        }
+    }
+
+    class Form {
+        constructor(selector, testID) {
+            const form = $(selector)
+
+            this.DOM = {
+                form: form,
+                issues: form.find('.form__issue'),
+                radio: form.find('.answer__radio--hidden'),
+                navBtn: form.find('.nav__btn'),
+                active: [],
+                counter: {
+                    curr: form.find('.counter__number--current'),
+                    max: form.find('.counter__number--max')
+                },
+                result: {
+                    perc: form.find('.mark__percent'),
+                    gained: form.find('.mark__points--gained'),
+                    max: form.find('.mark__points--max'),
+                }
+            }
+
+            this.cls = {
+                issue: '.form__issue',
+                answer: {
+                    proper: 'answer--proper',
+                    correct: 'answer--correct',
+                    wrong: 'answer--wrong'
+                },
+                result: {
+                    info: '.result__info',
+                    visible: 'result__info--visible',
+                }
+            }
+
+            // State
+            this.answers = {}
+            this.num__issues = 0
+            this.num_queries = 3
+            this.num_pages = this.countPages()
+            this.curr_page = 1
+            this.testID = testID
+            this.resultBox = undefined
+        }
+
+        countPages() {
+            const num_issues = this.num__issues =  this.DOM.issues.length
+            return Math.ceil(num_issues / this.num_queries)
+        }
+
+        updateCounter() {
+            const counter = this.DOM.counter
+            counter.curr.text(this.curr_page)
+        }
+
+        getAnswer = tgt => {
+            return {
+                query: tgt.attr('name'),
+                answer: tgt.attr('value')
+            }
+        }
+
+        getActiveQueries() {
+            return this.DOM.issues.filter('[data-active="true"]')
+        }
+
+        deactivateQueries() {
+            this.getActiveQueries().each(function(){ $(this).attr('data-active', false) })
+        }
+
+        activateQueries() {
+            this.DOM.issues.each(function(){ $(this).attr('data-active', true) })
+        }
+
+        loadNextQueries(last) {
+            for (let i=0; i<this.num_queries; i++) {
+                last.attr('data-active', true)
+                last = last.next()
+            }
+        }
+
+        loadPrevQueries(first) {
+            for (let i=0; i<this.num_queries; i++) {
+                first.attr('data-active', true)
+                first = first.prev()
+            }
+        }
+
+        loadQueries(dir) {
+            // Get active queries
+            const active = this.DOM.active = this.getActiveQueries()
+            
+            // Save relevant data
+            let active_queries_num, first_query, last_query
+            active_queries_num = active.length
+            first_query = $(active[0]).prev(this.cls.issue)
+            last_query = $(active[active_queries_num-1]).next(this.cls.issue)
+
+            // Load proper queries
+            if (dir === 'prev' && first_query.hasClass('form__issue')) {
+                this.deactivateQueries(active)
+                this.loadPrevQueries(first_query)
+                --this.curr_page
+            } else if (dir === 'next' && last_query.hasClass('form__issue')) {
+                this.deactivateQueries(active)
+                this.loadNextQueries(last_query)
+                ++this.curr_page
+            }
+        }
+
+        getCorrectAnswers(testID) {
+            return Object.entries(testObj[this.testID].queries).map(q => q[1].correct)
+        }
+
+        markAnswers() {
+            const correct = this.getCorrectAnswers()
+            const self = this
+            const cls = self.cls.answer
+            let num_correct = 0
+
+            // Apply class to the issue
+            this.DOM.issues.each(function(question_num) {
+                $(this).find(self.DOM.radio).each(function(){
+                    const radio = $(this)
+                    const answer = radio.parent()
+                    const is_correct = radio.attr('value') === correct[question_num]
+
+                    // Set proper class depending on the response
+                    if (radio.prop('checked')) {
+                        if (is_correct) {
+                            answer.addClass(cls.correct)
+                            ++num_correct
+                        }
+                        else answer.addClass(cls.wrong)
+                    } else if (is_correct) {
+                        answer.addClass(cls.proper)
+                    }
+                })
+            })
+            return num_correct
+        }
+
+        showResult() {
+            const correct = this.markAnswers()
+            const perc = (correct / this.num__issues) * 100
+            const cls = this.cls.result
+            const dom = this.DOM.result
+
+            // Find proper message box
+            let found
+
+            this.DOM.form.find(cls.info).each(function(){
+                const curr = $(this)
+                const pts = parseInt(curr.attr('data-score'))
+
+                if (found) {
+                    if (parseInt(found.attr('data-score')) < pts && pts <= perc) found = curr
+                } else if (pts <= perc) found = curr
+            })    
+
+            // Update visible result
+            this.resultBox = found.addClass(cls.visible)
+
+            dom.perc.text(`${perc.toFixed()}%`)
+            dom.gained.text(correct)
+            dom.max.text(this.num__issues)
+        }
+
+        initEventListeners() {
+            this.DOM.radio.on('change', e => {
+                // Initial data
+                const tgt = $(e.target)
+
+                // Save user answer
+                const {query, answer} = this.getAnswer(tgt)
+                if (answer) this.answers[query] = answer 
+            })
+
+
+            this.DOM.form.on('submit', e => {
+                e.preventDefault()
+            })
+
+            this.DOM.navBtn.on('click', e => {
+                // Initial data
+                const tgt = $(e.target)
+                const redirect = tgt.data().redirect
+
+                // Take action
+                if (redirect === 'end') {
+                    this.DOM.form.attr('data-finished', true)
+                    this.activateQueries()
+                    this.showResult()
+                } else {
+                    this.loadQueries(redirect)
+                    this.updateCounter()
+                }
+            })
+        }
+
+        disableEventListeners() {
+            this.DOM.radio.off('change')
+            this.DOM.form.off('submit')
+            this.DOM.navBtn.off('click')
+        }
+
+        init() {
+            this.loadNextQueries(this.DOM.issues.first())
+            this.DOM.counter.max.text(this.num_pages)
+            this.updateCounter()
+            this.initEventListeners()
+        }
+
+        clear() {
+            this.deactivateQueries()
+            !this.resultBox || this.resultBox.removeClass(this.cls.result.visible)
+            this.DOM.form.attr('data-finished', false)
+            this.DOM.radio.each(function(){
+                $(this).prop('checked', false)
+            })
+        }
+    }
+
+
+
+
+    let form
+        // Executive code
+    btnNo.on('click', () => btn.removeClass('is-open'))
+    btnYes.on('click', () => {
+        form = new Form('#test1', 'test1')
+        form.init()
+        // btn.addClass('is-reveal')
+    })
+    btnClose.on('click', () => {
+        btn.removeClass('is-open')
+        btn.removeClass('is-reveal')
+        form.disableEventListeners()
+        form.clear()
+        delete form
+    });
+
+    $('.btn-front').trigger('click');
+    // btnYes.trigger('click');
+    
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+$w-size: 200px;
+$w-margin: -$w-size/2;
+$b-size: 70%; //This is % based on $w-size. Use any value you want (that makes sense) and any unit that you would like (test it)
+$box-wrapper-width: $b-size;
+$box-wrapper-height: $b-size;
+$box-wrapper-margin: calc((100% - #{$box-wrapper-height})/2) calc((100% - #{$box-wrapper-width})/2);
+$loader-bg-gradient: linear-gradient(to right, #141562, #486FBC, #EAB5A1, #8DD6FF, #4973C9, #D07CA7, #F4915E, #F5919E, #B46F89, #141562, #486FBC);
+
+//clip-path: inset() doesn't work on firefox and IE, if anyone feels like making it work with SVG clipping, please drop me a link in comments, would like to see it. :) 
+
+
+.loader {
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: $w-margin;
+	width: $w-size;
+	height: $w-size;
+	background-color: transparent;
+	border: none;
+
+	&__box-wrap {
+		width: $box-wrapper-width;
+	    height: $box-wrapper-height;
+		margin: $box-wrapper-margin;
+	    position: relative;
+        transform: rotate(-45deg);
+    }
+    
+    &__box {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-position: 0% 50%;
+        background-size: 1000% 1000%;
+        background-image: $loader-bg-gradient;
+        animation-timing-function: cubic-bezier(0.86,  0,  0.07,  1);
+        visibility: hidden;
+
+        &--one { animation: moveGradient 15s infinite, oneMove 3.5s infinite; }
+        &--two { animation: moveGradient 15s infinite, twoMove 3.5s .15s infinite; }
+        &--three { animation: moveGradient 15s infinite, threeMove 3.5s .3s infinite; }
+        &--four { animation: moveGradient 15s infinite, fourMove 3.5s .575s infinite; }
+        &--five { animation: moveGradient 15s infinite, fiveMove 3.5s .725s infinite; }
+        &--six { animation: moveGradient 15s infinite, sixMove 3.5s .875s infinite; }
+    }
+}
+
+@keyframes moveGradient {
+    to { background-position: 100% 50%; }
+}
+
+@keyframes oneMove {
+    0% { clip-path: inset(0% 35% 70% round 5%); visibility: visible;}
+    14% { clip-path: inset(0% 35% 70% round 5%); }
+    28% { clip-path: inset(35% round 5%); }
+    42% { clip-path: inset(35% 70% 35% 0 round 5%); }
+    57% { clip-path: inset(35% 70% 35% 0 round 5%); }
+    71% { clip-path: inset(0% 70% 70% 0 round 5%); }
+    85% { clip-path: inset(0% 70% 70% 0 round 5%); }
+    100% { clip-path: inset(0% 35% 70% round 5%); }
+}
+
+@keyframes twoMove {
+    0% { clip-path: inset(0% 70% 70% 0 round 5%); visibility: visible;}
+    14% { clip-path: inset(0% 70% 70% 0 round 5%); }
+    28% { clip-path: inset(0% 35% 70% round 5%); }
+    42% { clip-path: inset(0% 35% 70% round 5%); }
+    57% { clip-path: inset(35% round 5%); }
+    71% { clip-path: inset(35% 70% 35% 0 round 5%); }
+    85% { clip-path: inset(35% 70% 35% 0 round 5%); }
+    100% { clip-path: inset(0% 70% 70% 0 round 5%); }
+}
+
+@keyframes threeMove {
+    0% { clip-path: inset(35% 70% 35% 0 round 5%); visibility: visible;}
+    14% { clip-path: inset(35% 70% 35% 0 round 5%); }
+    28% { clip-path: inset(0% 70% 70% 0 round 5%); }
+    42% { clip-path: inset(0% 70% 70% 0 round 5%); }
+    57% { clip-path: inset(0% 35% 70% round 5%); }
+    71% {clip-path: inset(0% 35% 70% round 5%); }
+    85% { clip-path: inset(35% round 5%); }
+    100% { clip-path: inset(35% 70% 35% 0 round 5%); }
+}
+
+@keyframes fourMove {
+    0% { clip-path: inset(35% 0% 35% 70% round 5%); visibility: visible;}
+    14% { clip-path: inset(35% 0% 35% 70% round 5%); }
+    28% { clip-path: inset(35% round 5%); }
+    42% { clip-path: inset(70% 35% 0% 35% round 5%); }
+    57% { clip-path: inset(70% 35% 0% 35% round 5%); }
+    71% { clip-path: inset(70% 0 0 70% round 5%); }
+    85% { clip-path: inset(70% 0 0 70% round 5%); }
+    100% { clip-path: inset(35% 0% 35% 70% round 5%); }
+}
+
+@keyframes fiveMove {
+    0% { clip-path: inset(70% 0 0 70% round 5%); visibility: visible;}
+    14% { clip-path: inset(70% 0 0 70% round 5%); }
+    28% { clip-path: inset(35% 0% 35% 70% round 5%); }
+    42% { clip-path: inset(35% 0% 35% 70% round 5%); }
+    57% { clip-path: inset(35% round 5%); }
+    71% { clip-path: inset(70% 35% 0% 35% round 5%); }
+    85% { clip-path: inset(70% 35% 0% 35% round 5%); }
+    100% { clip-path: inset(70% 0 0 70% round 5%); }
+}
+
+@keyframes sixMove {
+    0% { clip-path: inset(70% 35% 0% 35% round 5%); visibility: visible;}
+    14% { clip-path: inset(70% 35% 0% 35% round 5%); }
+    28% { clip-path: inset(70% 0 0 70% round 5%); }
+    42% { clip-path: inset(70% 0 0 70% round 5%); }
+    57% { clip-path: inset(35% 0% 35% 70% round 5%); }
+    71% { clip-path: inset(35% 0% 35% 70% round 5%); }
+    85% { clip-path: inset(35% round 5%); }
+    100% { clip-path: inset(70% 35% 0% 35% round 5%); }
+}

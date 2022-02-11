@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Knockout Text With Mousemove Effects | Html CSS and jQuery</title>
+
+    <style>
+
+    @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        font-size: 62.5%;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    section {
+        height: 100vh;
+        background-image: url(bg.jpg);
+        background-size: cover;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background-size: 110%;
+        background-position: center;
+    }
+
+    section h1 {
+        text-align: center;
+        padding: 0 0 3rem 0;
+        position: relative;
+        text-transform: uppercase;
+        font-size: 10rem;
+        max-width: 40rem;
+        line-height: .6em;
+        color: #000;
+        background-color: #fff;
+        word-wrap: break-word;
+        mix-blend-mode: screen;
+    }
+
+    section h1 span {
+        font-size: .5em;
+    }
+
+    </style>
+
+</head>
+<body>
+    <section>
+        <h1>
+            <span>Place Your</span> Text
+            <span>Here</span>
+        </h1>
+    </section>
+
+    <script src="jQuery.min.js"></script>
+    <script>
+    
+        $(document).ready(() => {
+            $(window).on('mousemove', e => {
+                const moveX = (e.pageX - window.innerWidth/2) * .1
+                const moveY = (e.pageY - window.innerHeight/2) * .1
+                $('section').css('background-position', `${50 + moveX}% ${50 + moveY}%`)
+            })
+        });
+
+    </script>
+</body>
+</html>

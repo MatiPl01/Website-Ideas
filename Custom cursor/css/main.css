@@ -1,0 +1,101 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  height: 100vh;
+  overflow-X: hidden;
+  cursor: none;
+}
+
+#cursor {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: .2rem solid white;
+  -webkit-transition: background-color .4s, -webkit-transform .3s;
+  transition: background-color .4s, -webkit-transform .3s;
+  transition: background-color .4s, transform .3s;
+  transition: background-color .4s, transform .3s, -webkit-transform .3s;
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
+  -webkit-filter: drop-shadow(0 0 0.5rem red);
+          filter: drop-shadow(0 0 0.5rem red);
+}
+
+#cursor::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: .2;
+  border-radius: 50%;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+#cursor.cursor-click {
+  -webkit-transform: translate(-50%, -50%) scale(0.2);
+          transform: translate(-50%, -50%) scale(0.2);
+}
+
+#cursor.cursor-click::before {
+  background-color: red;
+  -webkit-transform: scale(4);
+          transform: scale(4);
+  opacity: .8;
+}
+
+#cursor:active {
+  -webkit-transform: translate(-50%, -50%) scale(0.5);
+          transform: translate(-50%, -50%) scale(0.5);
+  background-color: #fff;
+}
+
+#cursor:active::before {
+  background-image: radial-gradient(red, transparent);
+  background-color: transparent;
+  -webkit-transform: scale(4);
+          transform: scale(4);
+  opacity: .75;
+}
+
+@-webkit-keyframes cursor-pulsate {
+  30% {
+    -webkit-transform: translate(-50%, -50%) scale(0.2);
+            transform: translate(-50%, -50%) scale(0.2);
+    background-color: #fff;
+    opacity: 1;
+  }
+  100% {
+    background-color: red;
+    -webkit-transform: translate(-50%, -50%) scale(1.5);
+            transform: translate(-50%, -50%) scale(1.5);
+    border-color: transparent;
+    opacity: .2;
+  }
+}
+
+@keyframes cursor-pulsate {
+  30% {
+    -webkit-transform: translate(-50%, -50%) scale(0.2);
+            transform: translate(-50%, -50%) scale(0.2);
+    background-color: #fff;
+    opacity: 1;
+  }
+  100% {
+    background-color: red;
+    -webkit-transform: translate(-50%, -50%) scale(1.5);
+            transform: translate(-50%, -50%) scale(1.5);
+    border-color: transparent;
+    opacity: .2;
+  }
+}
+/*# sourceMappingURL=main.css.map */

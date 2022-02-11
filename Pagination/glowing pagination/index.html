@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Neon button</title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+    
+        * {
+            box-sizing: inherit;
+        }
+    
+        body {
+            margin: 0;
+            color: white;
+            background-color: #777;
+    
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+    
+            box-sizing: border-box;
+        }
+    </style>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    
+    <ul class="pagination">
+        <li class="pagination__page pagination__page--prev"><a href="#" class="pagination__link">&lt;</a></li>
+        <li class="pagination__page pagination__page--active"><a href="#" class="pagination__link">1</a></li>
+        <li class="pagination__page"><a href="#" class="pagination__link">2</a></li>
+        <li class="pagination__page"><a href="#" class="pagination__link">3</a></li>
+        <li class="pagination__page"><a href="#" class="pagination__link">4</a></li>
+        <li class="pagination__page"><a href="#" class="pagination__link">5</a></li>
+        <li class="pagination__page pagination__page--next"><a href="#" class="pagination__link">&gt;</a></li>
+    </ul>
+
+    <script src="js/jquery.js"></script>
+    <script>
+        
+        $('document').ready(() => {
+
+            const activeClass = 'pagination__page--active'
+            const pageClass = 'pagination__page'
+            const firstPageDOM = $(`.${pageClass}:nth(1)`)
+            const lastPageDOM = $(`.${pageClass}:nth(5)`)
+
+            $('.pagination__page--next').on('click', () => {
+                const activeClassDOM = $(`.${activeClass}`)
+
+                if (!activeClassDOM.is(`.${pageClass}:nth(5)`)) {
+                    activeClassDOM.removeClass(activeClass)
+                    .next().addClass(activeClass)
+                } else{
+                    activeClassDOM.removeClass(activeClass)
+                    firstPageDOM.addClass(activeClass)
+                }
+            })
+
+            $('.pagination__page--prev').on('click', () => {
+                const activeClassDOM = $(`.${activeClass}`)
+                
+                if (!activeClassDOM.is(`.${pageClass}:nth(1)`)) {
+                    activeClassDOM.removeClass(activeClass)
+                    .prev().addClass(activeClass)
+                } else {
+                    activeClassDOM.removeClass(activeClass)
+                    lastPageDOM.addClass(activeClass)
+                }
+            })
+        })
+
+    </script>
+</body>
+</html>

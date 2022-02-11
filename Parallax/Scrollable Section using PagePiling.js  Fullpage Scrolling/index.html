@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pagepiling | Full Screen scrolling</title>
+
+    <link rel="stylesheet" href="jquery.pagepiling.css">
+    <style>
+    
+        @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sec {
+            font-family: 'Popins', Arial, Helvetica, sans-serif;
+            background-size: cover;
+            background-position: center;
+            filter: contrast(1.25);
+            text-align: center;
+        }
+
+        .sec1 { background-image:
+            radial-gradient(transparent 75%, rgba(0,0,0,.5)),
+            url(img/norway.jpg); }
+        .sec2 { background-image:
+            radial-gradient(transparent 75%, rgba(0,0,0,.5)),
+            url(img/rome.jpg); }
+        .sec3 { background-image:
+            radial-gradient(transparent 75%, rgba(0,0,0,.5)),
+            url(img/austria.jpg); }
+        .sec4 { background-image:
+            radial-gradient(transparent 75%, rgba(0,0,0,.5)),
+            url(img/italy.jpg); }
+
+        .sec h1 {
+            font-size: 5rem;
+            color: white;
+            text-shadow: 0 0 .3rem black,
+                         0 0 .5rem rgba(0,0,0,.6),
+                         0 0 1rem rgba(0,0,0,.25);
+        }
+        
+    
+    </style>
+</head>
+<body>
+
+    <div id="pagepiling">
+        <section class="pp-section sec sec1">
+            <h1>Norway</h1>
+        </section>
+        <section class="pp-section sec sec2">
+            <h1>Rome</h1>
+        </section>
+        <section class="pp-section sec sec3">
+            <h1>Austria</h1>
+        </section>
+        <section class="pp-section sec sec4">
+           <h1>Italy</h1>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pagepiling-js-version-kostyast@2.0.5/jquery.pagepiling.min.js"></script>
+
+    <script>
+        window.$ || document.write('<script src="jquery.min.js"><//script>')
+        window.$ || document.write('<script src="plugins/jquery.pagepiling.min.js"><//script>');
+    </script>
+
+    <script>
+    
+        $(document).ready(() => {
+            $('#pagepiling').pagepiling({
+                navigation: {
+                    textColor: '#fff',
+                    bulletsColor: '#fff',
+                    position: 'right',
+                    tooltips: ['sec1', 'sec2', 'sec3', 'sec4'],
+                }
+            })
+        })
+    
+    </script>
+
+</body>
+</html>

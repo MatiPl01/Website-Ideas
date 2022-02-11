@@ -1,0 +1,416 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+body {
+  background-color: #f1c40f;
+  overflow: hidden;
+}
+
+.loader h1 {
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-top: 4rem;
+  margin-left: 2rem;
+}
+
+.loader .body {
+  -webkit-animation: speeder .4s linear infinite;
+          animation: speeder .4s linear infinite;
+  margin-right: 13rem;
+}
+
+.loader .body > span {
+  height: .5rem;
+  width: 4rem;
+  background-color: #000;
+  position: absolute;
+  top: -1.8rem;
+  left: 6rem;
+  border-radius: 2px 1rem 1px 0;
+}
+
+.loader .body > span > span {
+  width: 3rem;
+  height: 1px;
+  background: -webkit-gradient(linear, left top, right top, from(#000), to(transparent));
+  background: linear-gradient(to right, #000, transparent);
+  position: absolute;
+  -webkit-animation: fazer1 .2s linear infinite;
+          animation: fazer1 .2s linear infinite;
+}
+
+.loader .body > span > span:nth-child(2) {
+  top: 3px;
+  -webkit-animation: fazer2 .4s linear infinite;
+          animation: fazer2 .4s linear infinite;
+}
+
+.loader .body > span > span:nth-child(3) {
+  top: 1px;
+  -webkit-animation: fazer3 .4s linear infinite;
+          animation: fazer3 .4s linear infinite;
+}
+
+.loader .body > span > span:nth-child(4) {
+  top: 4px;
+  -webkit-animation: fazer4 1s linear infinite;
+          animation: fazer4 1s linear infinite;
+}
+
+.loader .body .base span {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: .6rem solid transparent;
+  border-right: 10rem solid #000;
+  border-bottom: .6rem solid transparent;
+}
+
+.loader .body .base span:before, .loader .body .base span:after {
+  content: "";
+  position: absolute;
+}
+
+.loader .body .base span:before {
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 50%;
+  background: #000;
+  right: -11rem;
+  top: -1.6rem;
+}
+
+.loader .body .base span:after {
+  border-top: 0 solid transparent;
+  border-right: 5.5rem solid #000;
+  border-bottom: 1.6rem solid transparent;
+  top: -1.6rem;
+  right: -10rem;
+}
+
+.loader .body .face {
+  width: 2rem;
+  border-radius: 2rem 2rem 0 0;
+  -webkit-transform: rotate(-40deg);
+          transform: rotate(-40deg);
+  left: 10rem;
+  top: -1.5rem;
+}
+
+.loader .body .face, .loader .body .face::after {
+  position: absolute;
+  background-color: #000;
+  height: 1.2rem;
+}
+
+.loader .body .face:after {
+  content: "";
+  height: 1.2rem;
+  width: 1.2rem;
+  right: .4rem;
+  top: .7rem;
+  -webkit-transform: rotate(40deg);
+          transform: rotate(40deg);
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  border-radius: .4rem;
+}
+
+.loader .longfazers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.loader .longfazers span {
+  position: absolute;
+  height: 2px;
+  width: 20%;
+  background-image: -webkit-gradient(linear, left top, right top, from(#000), to(transparent));
+  background-image: linear-gradient(to right, #000, transparent);
+}
+
+.loader .longfazers span:nth-child(1) {
+  top: 20%;
+  -webkit-animation: lf .6s linear infinite;
+          animation: lf .6s linear infinite;
+  -webkit-animation-delay: -5s;
+          animation-delay: -5s;
+}
+
+.loader .longfazers span:nth-child(2) {
+  top: 40%;
+  -webkit-animation: lf2 .8s linear infinite;
+          animation: lf2 .8s linear infinite;
+  -webkit-animation-delay: -1s;
+          animation-delay: -1s;
+}
+
+.loader .longfazers span:nth-child(3) {
+  top: 60%;
+  -webkit-animation: lf3 .6s linear infinite;
+          animation: lf3 .6s linear infinite;
+}
+
+.loader .longfazers span:nth-child(4) {
+  top: 80%;
+  -webkit-animation: lf4 .5s linear infinite;
+          animation: lf4 .5s linear infinite;
+  -webkit-animation-delay: -3s;
+          animation-delay: -3s;
+}
+
+@-webkit-keyframes fazer1 {
+  from {
+    left: 0;
+  }
+  to {
+    left: -80px;
+    opacity: 0;
+  }
+}
+
+@keyframes fazer1 {
+  from {
+    left: 0;
+  }
+  to {
+    left: -80px;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fazer2 {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100px;
+    opacity: 0;
+  }
+}
+
+@keyframes fazer2 {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100px;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fazer3 {
+  from {
+    left: 0;
+  }
+  to {
+    left: -50px;
+    opacity: 0;
+  }
+}
+
+@keyframes fazer3 {
+  from {
+    left: 0;
+  }
+  to {
+    left: -50px;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fazer4 {
+  from {
+    left: 0;
+  }
+  to {
+    left: -150px;
+    opacity: 0;
+  }
+}
+
+@keyframes fazer4 {
+  from {
+    left: 0;
+  }
+  to {
+    left: -150px;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes speeder {
+  0% {
+    -webkit-transform: translate(2px, 1px) rotate(0deg);
+            transform: translate(2px, 1px) rotate(0deg);
+  }
+  10% {
+    -webkit-transform: translate(-1px, -3px) rotate(-1deg);
+            transform: translate(-1px, -3px) rotate(-1deg);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 0px) rotate(1deg);
+            transform: translate(-2px, 0px) rotate(1deg);
+  }
+  30% {
+    -webkit-transform: translate(1px, 2px) rotate(0deg);
+            transform: translate(1px, 2px) rotate(0deg);
+  }
+  40% {
+    -webkit-transform: translate(1px, -1px) rotate(1deg);
+            transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    -webkit-transform: translate(-1px, 3px) rotate(-1deg);
+            transform: translate(-1px, 3px) rotate(-1deg);
+  }
+  60% {
+    -webkit-transform: translate(-1px, 1px) rotate(0deg);
+            transform: translate(-1px, 1px) rotate(0deg);
+  }
+  70% {
+    -webkit-transform: translate(3px, 1px) rotate(-1deg);
+            transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    -webkit-transform: translate(-2px, -1px) rotate(1deg);
+            transform: translate(-2px, -1px) rotate(1deg);
+  }
+  90% {
+    -webkit-transform: translate(2px, 1px) rotate(0deg);
+            transform: translate(2px, 1px) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate(1px, -2px) rotate(-1deg);
+            transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+@keyframes speeder {
+  0% {
+    -webkit-transform: translate(2px, 1px) rotate(0deg);
+            transform: translate(2px, 1px) rotate(0deg);
+  }
+  10% {
+    -webkit-transform: translate(-1px, -3px) rotate(-1deg);
+            transform: translate(-1px, -3px) rotate(-1deg);
+  }
+  20% {
+    -webkit-transform: translate(-2px, 0px) rotate(1deg);
+            transform: translate(-2px, 0px) rotate(1deg);
+  }
+  30% {
+    -webkit-transform: translate(1px, 2px) rotate(0deg);
+            transform: translate(1px, 2px) rotate(0deg);
+  }
+  40% {
+    -webkit-transform: translate(1px, -1px) rotate(1deg);
+            transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    -webkit-transform: translate(-1px, 3px) rotate(-1deg);
+            transform: translate(-1px, 3px) rotate(-1deg);
+  }
+  60% {
+    -webkit-transform: translate(-1px, 1px) rotate(0deg);
+            transform: translate(-1px, 1px) rotate(0deg);
+  }
+  70% {
+    -webkit-transform: translate(3px, 1px) rotate(-1deg);
+            transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    -webkit-transform: translate(-2px, -1px) rotate(1deg);
+            transform: translate(-2px, -1px) rotate(1deg);
+  }
+  90% {
+    -webkit-transform: translate(2px, 1px) rotate(0deg);
+            transform: translate(2px, 1px) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate(1px, -2px) rotate(-1deg);
+            transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+@-webkit-keyframes lf {
+  from {
+    left: 200%;
+  }
+  to {
+    left: -200%;
+    opacity: 0;
+  }
+}
+
+@keyframes lf {
+  from {
+    left: 200%;
+  }
+  to {
+    left: -200%;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes lf2 {
+  from {
+    left: 200%;
+  }
+  to {
+    left: -200%;
+    opacity: 0;
+  }
+}
+
+@keyframes lf2 {
+  from {
+    left: 200%;
+  }
+  to {
+    left: -200%;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes lf3 {
+  from {
+    left: 200%;
+  }
+  to {
+    left: -100%;
+    opacity: 0;
+  }
+}
+
+@keyframes lf3 {
+  from {
+    left: 200%;
+  }
+  to {
+    left: -100%;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes lf4 {
+  from {
+    left: 200%;
+  }
+  to {
+    left: -100%;
+    opacity: 0;
+  }
+}
+
+@keyframes lf4 {
+  from {
+    left: 200%;
+  }
+  to {
+    left: -100%;
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=main.css.map */

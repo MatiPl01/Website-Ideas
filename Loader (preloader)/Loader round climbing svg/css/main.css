@@ -1,0 +1,96 @@
+.loader svg {
+  overflow: visible;
+  width: 10rem;
+  height: 15rem;
+  -webkit-filter: drop-shadow(0 0 1rem rgba(255, 86, 161, 0.5));
+          filter: drop-shadow(0 0 1rem rgba(255, 86, 161, 0.5));
+}
+
+.loader svg g {
+  -webkit-animation: slide 2s linear infinite;
+          animation: slide 2s linear infinite;
+}
+
+.loader svg g:nth-child(2) {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.loader svg g:nth-child(2) path {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+  stroke-dasharray: 0px 158px;
+  stroke-dashoffset: 1px;
+}
+
+.loader svg path {
+  stroke: url(#gradient);
+  stroke-width: 2rem;
+  stroke-linecap: round;
+  fill: none;
+  stroke-dasharray: 0 157px;
+  stroke-dashoffset: 0;
+  -webkit-animation: escalade 2s cubic-bezier(0.8, 0, 0.2, 1) infinite;
+          animation: escalade 2s cubic-bezier(0.8, 0, 0.2, 1) infinite;
+}
+
+.loader defs stop:first-child {
+  stop-color: #FF56A1;
+}
+
+.loader defs stop:last-child {
+  stop-color: #FF9350;
+}
+
+@-webkit-keyframes slide {
+  from {
+    -webkit-transform: translateY(-5rem);
+            transform: translateY(-5rem);
+  }
+  to {
+    -webkit-transform: translateY(5rem);
+            transform: translateY(5rem);
+  }
+}
+
+@keyframes slide {
+  from {
+    -webkit-transform: translateY(-5rem);
+            transform: translateY(-5rem);
+  }
+  to {
+    -webkit-transform: translateY(5rem);
+            transform: translateY(5rem);
+  }
+}
+
+@-webkit-keyframes escalade {
+  from {
+    stroke-dasharray: 0 157px;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 156px 157px;
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dasharray: 156px 157px;
+    stroke-dashoffset: -156px;
+  }
+}
+
+@keyframes escalade {
+  from {
+    stroke-dasharray: 0 157px;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 156px 157px;
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dasharray: 156px 157px;
+    stroke-dashoffset: -156px;
+  }
+}
+/*# sourceMappingURL=main.css.map */

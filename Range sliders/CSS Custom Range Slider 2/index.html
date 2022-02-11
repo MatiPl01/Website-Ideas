@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Custom Input Range Slider</title>
+
+    <style>
+
+    @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html { font-size: 62.5%; } /* 1rem == 10px*/
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #333;
+    }
+
+    .range__container {
+        position: relative;
+    }
+    
+    .range__value {
+        font-family: 'Poppins', Arial, Helvetica, sans-serif;
+        font-size: 8rem;
+        left: 50%;
+        bottom: 50%;
+        transform: translate(-50%, -10%);
+        position: absolute;
+        user-select: none;
+        color: #FFBC43;
+        text-shadow: 0 0 .3rem black,
+                     0 0 .6rem rgba(0,0,0, .5);
+    }
+
+    .range__slider {
+        appearance: none;  
+        -webkit-appearance: none;
+        outline: none;
+        width: 40rem;
+        height: 1.5rem;
+        border-radius: 2rem;
+        background-image: linear-gradient(to right, #FFBC43, #DE8F00);
+        box-shadow: inset 0 0 .5rem #333,
+                    inset 0 0 1rem rgba(0,0,0,.3),
+                    0 0 .5rem #333;
+    }
+
+    .range__slider::-webkit-slider-thumb {
+        appearance: none;
+        cursor: pointer;
+        -webkit-appearance: none;
+        width: 4rem;
+        height: 1.5rem;
+        background-image: linear-gradient(to right, #FFF3DF, #FFF7E8, #FFF3DF);
+        border-radius: 2rem;
+        box-shadow: 0 0 .3rem black,
+                    0 0 .6rem rgba(0,0,0, .5),
+                    0 0 1rem rgba(0,0,0, .4),
+                    inset 0 0 .3rem rgba(0,0,0, .6),
+                    inset 0 0 .5rem rgba(0,0,0, .4);
+
+    }
+
+    </style>
+</head>
+<body>
+    
+    <div class="range__container">
+        <span class="range__value"></span>
+        <input type="range" class="range__slider" name="value" min="0" max="1000" value="0">
+    </div>
+
+    <script src="jQuery.min.js"></script>
+    <script>
+    
+        $(document).ready(() => {
+            const rangeSlide = val => $('.range__value').text(val)
+
+            $('.range__slider').on('mousemove', function() { rangeSlide($(this).prop('value')) })
+        })
+    
+    </script>
+
+</body>
+</html>

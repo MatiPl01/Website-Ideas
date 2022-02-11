@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Bad+Script&display=swap');
+
+$color-text-glow: #00b3ff;
+
+.glowing-text {
+    font-family: 'Bad Script', cursive;
+    padding: 0;
+    margin: 0;
+    color: #111;
+    font-size: 16rem;
+    display: flex;
+
+    &__letter {
+        display: table-cell;
+        animation: glow-letter 2s linear infinite;
+    
+        &:nth-child(2) { animation-delay: .25s; }
+        &:nth-child(3) { animation-delay: .5s; }
+        &:nth-child(4) { animation-delay: .75s; }
+        &:nth-child(5) { animation-delay: 1s; }
+        &:nth-child(6) { animation-delay: 1.25s; }
+        &:nth-child(7) { animation-delay: 1.5s; }
+        &:nth-child(8) { animation-delay: 1.75s; }
+    }
+}
+
+@keyframes glow-letter {
+    0%, 100%  {
+        color: #fff;
+        filter: blur(2px);
+        text-shadow: 0 0 .1em  $color-text-glow,
+                    0 0 .2em  $color-text-glow,
+                    0 0 .4em  $color-text-glow,
+                    0 0 .8em  $color-text-glow,
+                    0 0 1.2em  $color-text-glow,
+                    0 0 2em  $color-text-glow,
+                    0 0 3em  $color-text-glow,
+                    0 0 4em  $color-text-glow,
+    }  
+    5%, 95% {
+        color: #111;
+        filter: blur(0);
+        text-shadow: none;
+    }
+}

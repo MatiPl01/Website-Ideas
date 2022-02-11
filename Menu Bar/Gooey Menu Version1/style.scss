@@ -1,0 +1,201 @@
+@import 'functions';
+
+:root {
+  font-size: 62.5%;
+}
+
+//vars
+$fg:#ff4081;
+$pi: 3.14;
+
+//config
+$menu-items: 5;
+$open-distance: 10rem;
+$opening-angle:$pi - .2;
+
+%goo{
+  filter:url('#shadowed-goo');
+  // debug 
+  // background:rgba(255,0,0,0.2);
+}
+%ball{
+  background: $fg;
+  border-radius: 100%;
+  width: 8rem;
+  height: 8rem;
+  margin-left: -4rem;
+  position: absolute;
+  fill: white;
+  text-align: center;
+  transition: transform ease-out 200ms;
+}
+.menu-open {
+  display: none;
+}
+.menu-item{
+  @extend %ball;
+}
+.hamburger{
+  $width: 2.5rem;
+  $height: 3px;
+  width: $width;
+  height: $height;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -$width/2;
+  margin-top: -$height/2;
+  transition: transform .2s;
+}
+
+$hamburger-spacing: .8rem;
+.hamburger-1{
+  transform: translateY(-$hamburger-spacing)
+}
+.hamburger-3{
+  transform: translateY($hamburger-spacing)
+}
+
+.menu{
+  @extend %goo;
+  $width: 38rem;
+  $height: 25rem;
+  position: fixed;
+  left: 50%;
+  margin-left: -$width/2;
+  padding-top: 2rem;
+  padding-left: $width/2;
+  width: $width;
+  height: $height;
+}
+
+
+.menu-item { 
+  transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &:hover {
+    background-color: white;
+    fill: $fg;
+  }
+  @for $i from 1 through $menu-items{
+    &:nth-child(#{$i+2}){
+      transition-duration: 10ms+(60ms*($i));
+    }
+  }
+}
+
+.menu-open-button{
+  @extend %ball;
+  overflow: hidden;
+  z-index: 2;
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  transition-duration: .4s;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.menu-open-button:hover {
+  transform: scale(1.2);
+}
+.menu-open:checked + .menu-open-button{
+  transition-duration: .2s;
+  transform: scale(0.8);
+}
+
+.menu-open:checked ~ .menu-item {
+  transition-timing-function: cubic-bezier(0.935, 0.000, 0.340, 1.330);
+  @for $i from 1 through $menu-items{
+    $angle:(($pi - $opening-angle)/2)+(($opening-angle/($menu-items - 1))*($i - 1));
+    
+    &:nth-child(#{$i+2}){
+      transition-duration: 80ms+(80ms*$i);
+      transform: translate3d(cos($angle)*$open-distance,sin($angle)*$open-distance,0);
+    }
+  }
+}
+
+.menu-open:checked + .menu-open-button {
+  .hamburger {
+    animation-fill-mode: forwards !important;
+
+    &-1 { animation: hamburger-1 .9s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    &-2 { animation: hamburger-2 .9s .1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    &-3 { animation: hamburger-3 .9s .05s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  }
+}
+
+.menu-open:checked:hover + .menu-open-button {
+  transition-duration: 1s;
+  transform: rotate(270deg);
+}
+
+//
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &__icon {
+    width: 40%;
+    height: 40%;
+    filter: drop-shadow(1px 1px .3rem rgba(black, .6));
+    position: relative;
+  }
+
+  &__more {
+    &--ball {
+      position: absolute;
+      $size: .75rem;
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+      background-color: white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      backface-visibility: hidden;
+
+      &--1 { left: 15%; }
+      &--3 { left: 85%; }
+    }
+
+    &:hover .menu-item__more--ball {
+      background-color: $fg;
+
+      &--1 { animation: more-jump 2s ease-in-out infinite; }
+      &--2 { animation: more-jump 2s .2s ease-in-out infinite; }
+      &--3 { animation: more-jump 2s .4s ease-in-out infinite; }
+    }
+  }
+
+  &__checkbox {
+    display: none;
+  }
+}
+
+@keyframes hamburger-2 {
+  from { transform: rotate(0); }
+  30% { transform: rotate(-90deg); }
+  to { transform: translateY(5rem) rotate(-90deg) scale(.8); }
+}
+
+@keyframes hamburger-1 {
+  30% { transform: translate(5rem, -$hamburger-spacing) rotate(-10deg); }
+  31% { transform: translate(5rem, -5rem) rotate(-40deg); }
+  to { transform: rotate(-45deg); }
+}
+
+@keyframes hamburger-3 {
+  30% { transform: translate(-5rem, $hamburger-spacing) rotate(10deg); }
+  31% { transform: translate(-5rem, -5rem) rotate(40deg); }
+  to { transform: rotate(45deg); }
+}
+
+@keyframes more-jump {
+  33% { transform: scale(1.1) translate(-50%, -100%); }
+  67% { transform: scale(1.1) translate(-50%, 0); }
+}
+
+.u-disable-select {
+  user-select: none;
+}

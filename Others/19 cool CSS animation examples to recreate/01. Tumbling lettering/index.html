@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tumbling lettering</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<body>
+    <h1 class="animate backwards">The Animated Title</h1>
+    <h1 class="animate forwards">The Animated Title</h1>
+    <h1 class="animate mixed">The Animated Title </h1>
+
+    <script>
+        
+        window.addEventListener("load", () => {
+            const delay = 2;
+            const nodes = document.querySelectorAll(".animate");
+            nodes.forEach(node => {
+                const words = node.innerText.split(" ");
+                node.innerHTML = "";
+                words.forEach(word => {
+                    const item = document.createElement("span");
+                    item.innerText = word;
+                    const idx = words.indexOf(word)
+                    const calc = (delay + ((nodes.length + idx > -1 ? idx : 0) / 3));
+                    item.style.animationDelay = calc + "s";
+                    node.appendChild(item);
+                }) 
+            }) 
+        });
+
+    </script>
+
+</body>
+</html>

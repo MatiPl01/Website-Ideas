@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parallax Scrolling Effects | Html CSS & Javascript</title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+    
+        * {
+            box-sizing: inherit;
+        }
+    
+        body {
+            margin: 0;
+            color: white;
+            background-color: #777;
+    
+            /* display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; */
+    
+            box-sizing: border-box;
+        }
+    </style>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    
+    <section>
+        <div class="bg">
+            <img data-speed="-2" src="img/bg2.jpg" alt="Image" class="layer">
+        </div>
+        <img data-speed="-4" src="img/text1.png" alt="Image" class="layer">
+        <img data-speed="4" src="img/text2.png" alt="Image" class="layer">
+        <img data-speed="2" src="img/girl.png" alt="Image" class="layer girl">
+    </section>
+
+    <script src="js/jquery.js"></script>
+    <script>
+5
+        $(document).ready(() => {
+
+            const parallax = e => {
+                $('.layer').each(function() {
+                    const layer = $(this)
+                    const speed = layer.data('speed')
+                    const x = (e.pageX - window.innerWidth/2) * speed / 1000
+                    const y = (e.pageY - window.innerHeight/2) * speed / 1000
+                    layer.css('transform', `translate(${x}%, ${y}%)`)
+                })
+            }
+
+            $(document).on('mousemove', parallax)
+        })
+
+    </script>
+</body>
+</html>

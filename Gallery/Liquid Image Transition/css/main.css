@@ -1,0 +1,28 @@
+html {
+  font-size: 62.5%;
+}
+
+.landing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 100vh;
+}
+
+.distortion {
+  min-width: 64rem;
+  min-height: 92rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.intro h1 {
+  font-size: 5rem;
+}
+
+.intro p {
+  font-size: 2.5rem;
+}
+/*# sourceMappingURL=main.css.map */

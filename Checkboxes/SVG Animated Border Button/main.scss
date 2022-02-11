@@ -1,0 +1,210 @@
+$color-checked: #00ffe7;
+$color-not-checked: red;
+
+.toggleButton {
+    cursor: pointer;
+    display: block;
+    transform-origin: 50% 50%;
+    transform-style: preserve-3d;
+    transition: transform .14s ease;
+
+    &:active {
+        transform: rotateX(30deg);
+    }
+    input {
+        display: none;
+        & + span {
+            filter: drop-shadow(0 0 1rem rgba($color-not-checked, .6));
+
+            svg {
+                fill: none;
+                stroke-width: 3.6;
+                stroke: rgba($color-not-checked, .5);
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                width: 120px;
+                height: 120px;
+                z-index: 1;
+                stroke-dashoffset: 162.6 - 38;
+                stroke-dasharray: 0 162.6 133 (162.6 - 133);
+                transition: all .4s ease 0s;
+                stroke-width: 1px;
+            }
+            &::before,
+            &::after {
+                content: '';
+                width: 6px;
+                height: 40px;
+                background-color: $color-not-checked;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                border-radius: 5px;
+            }
+            &::before {
+                opacity: 0;
+                transform: scale(.3) translate(-50%, -50%) rotate(45deg);
+                animation: bounceInBefore .3s linear forwards .2s;
+            }
+            &::after {
+                opacity: 0;
+                transform: scale(.3) translate(-50%, -50%) rotate(-45deg);
+                animation: bounceInAfter .3s linear forwards .2s;
+            }
+        }
+        &:checked + span {
+            svg {
+                stroke-dashoffset: 162.6;
+                stroke-dasharray: 0 162.6 28 (162.6 - 28);
+                transition: all .4s ease .2s;
+                stroke: $color-checked;
+                stroke-width: 3px;
+            }
+
+            &::before {
+                opacity: 0;
+                transform: scale(.3) translate(-50%, -50%) rotate(45deg);
+                animation: bounceInBeforeDont .3s linear forwards 0s;
+            }
+            &::after {
+                opacity: 0;
+                transform: scale(.3) translate(-50%, -50%) rotate(-45deg);
+                animation: bounceInAfterDont .3s linear forwards 0s;
+            }
+        }
+    }
+}
+
+@keyframes bounceInBefore {
+    0% {
+        opacity: 0;
+        transform: scale(.3) translate(-50%, -50%) rotate(45deg);
+    }
+    50%{
+        opacity: 0.9;
+        transform: scale(1.1) translate(-50%, -50%) rotate(45deg);
+    }
+    80%{
+        opacity: 1;
+        transform: scale(.89) translate(-50%, -50%) rotate(45deg);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(45deg);
+    }
+}
+
+@keyframes bounceInAfter {
+    0% {
+        opacity: 0;
+        transform: scale(.3) translate(-50%, -50%) rotate(-45deg);
+    }
+    50%{
+        opacity: 0.9;
+        transform: scale(1.1) translate(-50%, -50%) rotate(-45deg);
+    }
+    80%{
+        opacity: 1;
+        transform: scale(.89) translate(-50%, -50%) rotate(-45deg);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(-45deg);
+    }
+}
+
+@keyframes bounceInBeforeDont {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(45deg);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(.3) translate(-50%, -50%) rotate(45deg);
+    }
+}
+
+@keyframes bounceInAfterDont {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%) rotate(-45deg);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(.3) translate(-50%, -50%) rotate(-45deg);
+    }
+}
+
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    box-sizing: inherit;
+    &:before,
+    &:after {
+        box-sizing: inherit;
+    }
+}
+
+// Center & dribbble
+body {
+    min-height: 100vh;
+    font-family: Roboto, Arial;
+    color: #ADAFB6;
+    background: #5628EE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .dribbble {
+        position: fixed;
+        display: block;
+        right: 24px;
+        bottom: 24px;
+        img {
+            display: block;
+            width: 76px;
+        }
+    }
+}
+
+//
+.power-switch {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    
+    &__button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #1b1b1b;
+        cursor: pointer;
+        box-shadow: 0 .3rem .4rem black,
+                    inset 0 -.2rem .5rem black,
+                    inset 0 .2rem .2rem rgba(white, .5),
+                    0 0 0 1px black;
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__checkbox:checked + &__button {
+        transition: filter .3s .6s;
+        filter: drop-shadow(0 0 1.5rem rgba(#00ffe7, .6));
+    }
+
+    &__checkbox:checked ~ .power-switch__button > .power-switch__icon {
+        stroke: #00ffe7;
+    }
+}

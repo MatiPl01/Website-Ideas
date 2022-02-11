@@ -1,0 +1,54 @@
+.pagination {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #5b5b5b;
+  border-radius: 10rem;
+  -webkit-box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.3), 0 0.5rem 1rem rgba(0, 0, 0, 0.1), 0 0 0.1rem #ffe01b, 0 0 0.5rem #ffe01b, 0 0 1rem #ffe01b;
+          box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.3), 0 0.5rem 1rem rgba(0, 0, 0, 0.1), 0 0 0.1rem #ffe01b, 0 0 0.5rem #ffe01b, 0 0 1rem #ffe01b;
+}
+
+.pagination__page {
+  list-style-type: none;
+  background-color: #353535;
+  width: 4rem;
+  height: 4rem;
+  margin: .5rem;
+  border-radius: .4rem;
+  position: relative;
+  -webkit-box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.3), 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.3), 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.pagination__page:last-child {
+  border-radius: .4rem 50% 50% .4rem;
+}
+
+.pagination__page:first-child {
+  border-radius: 50% .4rem .4rem 50%;
+}
+
+.pagination__page--active .pagination__link,
+.pagination__page:hover .pagination__link {
+  color: white;
+  text-shadow: 0 0 0.25rem #ffe01b, 0 0 0.5rem #ffe01b, 0 0 0.75rem #ffe01b, 0 0 1rem #ffe01b, 0 0 1.25rem #ffe01b, 0 0 1.5rem #ffe01b, 0 0 1.75rem #ffe01b, 0 0 2rem #ffe01b;
+}
+
+.pagination__page--active .pagination__link:hover {
+  text-shadow: 0 0 0.1rem #ffe01b, 0 0 0.5rem #ffe01b, 0 0 1rem #ffe01b;
+}
+
+.pagination__link {
+  text-align: center;
+  text-decoration: none;
+  font-size: 2rem;
+  line-height: 4rem;
+  color: #565656;
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
+}
+/*# sourceMappingURL=main.css.map */

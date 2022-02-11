@@ -1,0 +1,199 @@
+/* HTML ELEMENTS */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-image: radial-gradient(#364D58, #000);
+  color: #555;
+}
+
+/* WRAPPER */
+#wrapper {
+  width: 80rem;
+  margin: 4rem auto;
+}
+
+/* CONTENT */
+#content h2 {
+  font-family: Helvetica, Arial, Sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #eee;
+  text-shadow: 0px .2rem .6rem #333;
+  margin-left: 40rem;
+  padding-top: 2rem;
+}
+
+/* BAR CHART */
+#bar {
+  list-style: none;
+  /* Last bottom should have a shadow */
+}
+
+#bar li {
+  /* Ellipse top */
+}
+
+#bar li .bottom {
+  -webkit-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+  position: relative;
+  margin: .5rem 0;
+  width: 5rem;
+  height: 10rem;
+  border-radius: 4rem/10rem;
+  background: #97a7a9 -webkit-gradient(linear, right top, left top, from(#97a7a9), to(#b8cbcd));
+  background: #97a7a9 linear-gradient(-90deg, #97a7a9, #b8cbcd);
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
+#bar li .bottom .infobox {
+  padding: 4rem 0 0 60rem;
+  -webkit-transition: color .5s;
+  transition: color .5s;
+}
+
+#bar li .bottom .infobox h3 {
+  font-family: Georgia,serif,Times;
+}
+
+#bar li .bottom .infobox p {
+  font-family: "Lucida Grande",Arial,Helvetica,Sans-Serif;
+  opacity: 0;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
+#bar li .top {
+  background-color: rgba(213, 238, 241, 0.5);
+  position: relative;
+  float: left;
+  margin-left: 1rem;
+  width: 4rem;
+  height: 10rem;
+  border-radius: 50%;
+  -webkit-transition: margin-left, .5s;
+  transition: margin-left, .5s;
+}
+
+#bar li .top img {
+  margin-left: 1rem;
+  margin-top: 1.5rem;
+}
+
+#bar li:hover .infobox {
+  color: #eee;
+  text-shadow: 0px .5rem .5rem #111;
+}
+
+#bar li:hover .infobox p {
+  opacity: 1;
+}
+
+#bar #iphone .top {
+  z-index: 2;
+}
+
+#bar #iphone .bottom {
+  z-index: 1;
+}
+
+#bar #iphone:hover .top {
+  background-color: #1f81ac;
+  margin-left: 16rem;
+  z-index: 4;
+}
+
+#bar #iphone:hover .bottom {
+  width: 20rem;
+  background: #1f81ac -webkit-gradient(linear, right top, left top, from(#27a1d7), to(#176181));
+  background: #1f81ac linear-gradient(-90deg, #27a1d7, #176181);
+  z-index: 3;
+}
+
+#bar #macbook .top {
+  z-index: 2;
+}
+
+#bar #macbook .bottom {
+  z-index: 1;
+}
+
+#bar #macbook:hover .top {
+  background-color: #bc003c;
+  margin-left: 21rem;
+  z-index: 4;
+}
+
+#bar #macbook:hover .bottom {
+  width: 25rem;
+  background: #bc003c -webkit-gradient(linear, right top, left top, from(#ef004c), to(#89002c));
+  background: #bc003c linear-gradient(-90deg, #ef004c, #89002c);
+  z-index: 3;
+}
+
+#bar #ipod .top {
+  z-index: 2;
+}
+
+#bar #ipod .bottom {
+  z-index: 1;
+}
+
+#bar #ipod:hover .top {
+  background-color: #d98f23;
+  margin-left: 27rem;
+  z-index: 4;
+}
+
+#bar #ipod:hover .bottom {
+  width: 31rem;
+  background: #d98f23 -webkit-gradient(linear, right top, left top, from(#e2a54d), to(#ad721c));
+  background: #d98f23 linear-gradient(-90deg, #e2a54d, #ad721c);
+  z-index: 3;
+}
+
+#bar #cinema .top {
+  z-index: 2;
+}
+
+#bar #cinema .bottom {
+  z-index: 1;
+}
+
+#bar #cinema:hover .top {
+  background-color: #7da864;
+  margin-left: 11rem;
+  z-index: 4;
+}
+
+#bar #cinema:hover .bottom {
+  width: 15rem;
+  background: #7da864 -webkit-gradient(linear, right top, left top, from(#98ba85), to(#648b4e));
+  background: #7da864 linear-gradient(-90deg, #98ba85, #648b4e);
+  z-index: 3;
+}
+
+#bar #macmini .top {
+  z-index: 2;
+}
+
+#bar #macmini .bottom {
+  z-index: 1;
+}
+
+#bar #macmini:hover .top {
+  background-color: #3f1150;
+  margin-left: 13rem;
+  z-index: 4;
+}
+
+#bar #macmini:hover .bottom {
+  width: 17rem;
+  background: #3f1150 -webkit-gradient(linear, right top, left top, from(#601a7a), to(#1e0826));
+  background: #3f1150 linear-gradient(-90deg, #601a7a, #1e0826);
+  z-index: 3;
+}
+/*# sourceMappingURL=main.css.map */

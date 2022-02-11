@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tooltip | CSS Hover Effects</title>
+
+    <style>
+
+    @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html { font-size: 62.5%; } /* 1rem == 10px*/
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #333;
+    }
+
+    .tooltip {
+        font-family: 'Poppins', Arial, Helvetica, sans-serif;
+        display: flex;
+    }
+
+    .tooltip__item {
+        position: relative;
+        list-style-type: none;
+        width: 2rem;
+        height: 2rem;
+        background-color: #777;
+        margin: 0 2rem;
+        border-radius: 50%;
+        transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        cursor: pointer;
+    }
+
+    .tooltip__item:hover {
+        background-color: #86ff3b;
+        box-shadow: 0 0 0 .4rem #333,
+                    0 0 0 .6rem #86ff3b;
+    }
+
+    .tooltip__content {
+        position: absolute;
+        bottom: 0;
+        width: 40rem;
+        background-color: #fff;
+        color: #777;
+        padding: 2rem;
+        border-radius: .5rem;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .3s ease-in-out;
+        transform: translate(calc(-50% + 1.1rem), -50%);
+    }
+
+    .tooltip__content::before {
+        content: '';
+        position: absolute;
+        width: 3rem;
+        height: 1.5rem;
+        bottom: -1rem;
+        background-color: #fff;
+        left: 50%;
+        transform: translateX(-50%);
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+
+    .tooltip__item:hover .tooltip__content {
+        visibility: visible;
+        opacity: 1;
+        transform: translate(calc(-50% + 1.1rem), -25%);
+    }
+
+
+    </style>
+</head>
+<body>
+    
+    <ul class="tooltip">
+        <li class="tooltip__item">
+            <div class="tooltip__content">
+                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, numquam!</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda dolores aperiam ullam, quas, consequatur ad numquam explicabo qui molestias, repudiandae dignissimos voluptas? Natus debitis eveniet, exercitationem perspiciatis illum totam quod harum sequi labore, ipsa vel sint, magnam placeat est dicta hic. Consequatur dolore ipsam voluptate ullam minus deleniti temporibus omnis.</p>
+            </div>
+        </li>
+        <li class="tooltip__item">
+            <div class="tooltip__content">
+                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, numquam!</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda dolores aperiam ullam, quas, consequatur ad numquam explicabo qui molestias, repudiandae dignissimos voluptas? Natus debitis eveniet, exercitationem perspiciatis illum totam quod harum sequi labore, ipsa vel sint, magnam placeat est dicta hic. Consequatur dolore ipsam voluptate ullam minus deleniti temporibus omnis.</p>
+            </div>
+        </li>
+        <li class="tooltip__item">
+            <div class="tooltip__content">
+                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, numquam!</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda dolores aperiam ullam, quas, consequatur ad numquam explicabo qui molestias, repudiandae dignissimos voluptas? Natus debitis eveniet, exercitationem perspiciatis illum totam quod harum sequi labore, ipsa vel sint, magnam placeat est dicta hic. Consequatur dolore ipsam voluptate ullam minus deleniti temporibus omnis.</p>
+            </div>
+        </li>
+    </ul>
+
+</body>
+</html>

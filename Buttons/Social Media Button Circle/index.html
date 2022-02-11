@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Media Share Circle</title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+
+        * {
+            box-sizing: inherit;
+        }
+
+        body {
+            margin: 0;
+            color: white;
+            background-color: #777;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+
+            box-sizing: border-box;
+        }
+
+    </style>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <div class="share-circle">
+        <div class="share-circle__share">
+            <svg class="share-circle__icon">
+                <use xlink:href="img/icons.svg#icon-share2"></use>
+            </svg>
+            <ul class="share-circle__items">
+                <li class="share-circle__item">
+                    <a href="#">
+                        <svg class="share-circle__icon">
+                            <use xlink:href="img/icons.svg#icon-facebook"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="share-circle__item">
+                    <a href="#">
+                        <svg class="share-circle__icon">
+                            <use xlink:href="img/icons.svg#icon-pinterest"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="share-circle__item">
+                    <a href="#">
+                        <svg class="share-circle__icon">
+                            <use xlink:href="img/icons.svg#icon-mail"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="share-circle__item">
+                    <a href="#">
+                        <svg class="share-circle__icon">
+                            <use xlink:href="img/icons.svg#icon-linkedin"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>

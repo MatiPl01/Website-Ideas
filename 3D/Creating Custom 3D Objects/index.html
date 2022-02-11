@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+    
+        * {
+            box-sizing: inherit;
+        }
+    
+        body {
+            margin: 0;
+            color: white;
+            background-color: #777;
+    
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+    
+            box-sizing: border-box;
+        }
+    </style>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <script src="js/jquery.min.js"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
+    <script src="https://s3.amazonaws.com/coursetro/stuff/mtl.js"></script>
+    <script src="https://s3.amazonaws.com/coursetro/stuff/obj.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+
+    <script> 
+        $('document').ready(() => {
+            const init = () => {
+                
+                // Create the Three.js Scene
+                const scene = new THREE.Scene();
+
+                // Create a new Perspective Camera
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+                camera.position.z = 25;
+
+                // Create a Full Screen WebGL Renderer
+                const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                // renderer.setClearColor("#DDDDDD"); // Alpha bg
+                renderer.setSize(window.innerWidth, window.innerHeight);
+
+                $('body').append(renderer.domElement);
+
+                // Make sure the project is responsive based on window resizing
+                window.addEventListener('resize', () => {
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                    camera.aspect = window.innerWidth / window.innerHeight;
+
+                    camera.updateProjectionMatrix();
+                })
+
+                // Add a light
+                const light = new THREE.PointLight(0xFFFFFF, 1.4, 1000)
+                light.position.set(0, 15, 15);
+                scene.add(light);
+
+                // Defining a variable for our two models
+                var ourObj;
+                var ourObj2;
+
+                // Create a material
+                const mtlLoader = new THREE.MTLLoader();
+
+                mtlLoader.load('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/glass.mtl', materials => {
+                    materials.preload();
+                    // Load the object
+                    const objLoader = new THREE.OBJLoader();
+                    objLoader.setMaterials(materials);
+                    objLoader.load('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/glass.obj', object => {
+                        scene.add(object);
+                        ourObj = object;
+                        object.position.z -= 370;
+                        object.rotation.x = 250;
+                    });
+                });
+
+                // Create a material
+                mtlLoader.load('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/center.mtl', materials => {
+                    materials.preload();
+
+                    // Load the object
+                    var objLoader = new THREE.OBJLoader();
+                    objLoader.setMaterials(materials);
+                    objLoader.load('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/center.obj', object => {
+                        scene.add(object);
+                        ourObj2 = object;
+                        object.position.z -= 70;
+                        object.rotation.x = 250;
+
+                        const tl = new TimelineMax();
+                        tl.from(ourObj2.scale, 2, { y: 0, x: 0, z: 0, ease: Expo.easeOut })
+                        tl.from(ourObj2.position, 2, { y: 0, z: -30, ease: Expo.easeOut })
+                        tl.from(ourObj.scale, 2, { x: 1.5, y: 1.5, z: 0, ease: Expo.easeOut }, '-=2')
+                        tl.from(ourObj.position, 1, { y: -20, ease: Expo.easeOut }, '-=3')
+                    });
+                });
+
+                
+
+
+
+
+                var render = function () {
+                    requestAnimationFrame(render);
+
+                    // Rotate the objects indefinitely
+                    ourObj.rotation.z -= .01;
+                    ourObj2.rotation.z += .03;
+
+                    renderer.render(scene, camera);
+                }
+
+                // Call this to render the entire scene
+                render();
+            }
+
+            init()
+            })
+    </script>
+</body>
+</html>

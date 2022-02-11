@@ -1,0 +1,15 @@
+section {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: url(../img/bg.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.focus {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: radial-gradient(#333, black);
+    min-height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+.image {
+    &__container {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100rem;
+    }
+
+    &__card {
+        position: relative;
+        width: 30rem;
+        height: 40rem;
+        margin: .75rem;
+        overflow: hidden;
+        box-shadow: .3rem .3rem .5rem rgba(100,100,100,.4),
+                    .5rem .5rem 1rem rgba(100,100,100,.2);
+        transition: all .3s ease;
+    }
+
+    &__box,
+    &__layer,
+    &__content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: all 1.1s cubic-bezier(.62,-0.17,.38,1.1);
+    }
+    
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition-duration: 1s;
+    }
+
+    &__layer {
+        &--1 {
+            background-color: #FFBC43;
+            transform: translateY(120%) skewY(5deg);
+        }
+        &--2 {
+            background-color: #fff;
+            transform: translateY(200%);
+        }
+    }
+
+    &__content {
+        background-color: #111;
+        transform: translateY(300%);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 4rem;
+    }
+
+    &__text {
+        color: #fff;
+        font-family: 'Poppins', Arial, Helvetica, sans-serif;
+        font-size: 1.5rem;
+        transform: translateY(400%);
+        transition: 1.1s cubic-bezier(.75,-0.17,.38,1.05);
+    }
+
+    &__card:hover {
+        transform: scale(1.1);
+        z-index: 1;
+        box-shadow: 0 0 .3rem rgba(100, 100, 100, .6),
+                    0 0 .5rem rgba(100, 100, 100, .4),
+                    0 0 1rem rgba(100, 100, 100, .3),
+                    inset 0 0 .5rem black,
+                    inset 0 0 1rem black;
+
+        .image {
+            &__box { transform: translateY(-100%); }
+            &__layer {
+                &--1, &--2 { transform: translateY(-100%); }
+            } 
+            &__img { filter: grayscale(1); }
+            &__content,
+            &__text { transform: translateY(0); }
+        }
+    }
+
+    &__container:hover &__card:not(:hover) {
+        transform: scale(.9);
+    }
+}

@@ -1,0 +1,52 @@
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+section #bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../img/bg.jpg);
+  background-size: calc(100% + var(--x)/2);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section .girl {
+  position: absolute;
+  top: 0;
+  width: 400px;
+  top: 0;
+  left: 50%;
+  max-width: calc(400px - var(--x)/50);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+section h2 {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  color: #ffffff;
+  font-size: 8em;
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translate(calc(100% - var(--x)*2), -50%);
+          transform: translate(calc(100% - var(--x)*2), -50%);
+}
+/*# sourceMappingURL=main.css.map */

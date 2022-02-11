@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loader climbing round</title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: white;
+            background-color: #777;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+
+            overflow: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <div class="loader">
+        <svg>
+            <g>
+                <path d="M 50,100 A 1,1 0 0 1 50,0" />
+            </g>
+            <g>
+                <path d="M 50,75 A 1,1 0 0 0 50,-25" />
+            </g>
+            <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" />
+                    <stop offset="100%" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    
+</body>
+</html>

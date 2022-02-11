@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" class="filterwrapper">
+        <defs>
+            <svg id="glitchmask-r" width="100%" height="100%" viewbox="0 0 100 100" preserveAspectRatio="none">
+                <line class="top-r" x1="0" y1="0" x2="100%" y2="0"> </line>
+                <line class="bot-r" x1="0" y1="100%" x2="100%" y2="100%"></line>
+            </svg>
+            <svg id="glitchmask-g" width="100%" height="100%" viewbox="0 0 100 100" preserveAspectRatio="none">
+                <line class="top-g" x1="0" y1="0" x2="100%" y2="0"></line>
+                <line class="bot-g" x1="0" y1="100%" x2="100%" y2="100%"></line>
+            </svg>
+
+            <filter color-interpolation-filters="sRGB" id="filter" x="0" y="0">
+                <feFlood flood-color="black" result="black" />
+
+                <!-- red text start -->
+                <feFlood flood-color="red" result="REDTXT_FLOOD_10" />
+                <feComposite operator="in" in="REDTXT_FLOOD_10" in2="SourceAlpha" result="REDTXT_COMP_20" />
+                <feOffset in="SourceGraphic" dx="-2" dy="0" result="REDTXT_OFFSET_30" />
+                <feMerge result="REDTXT_MERGE_40">
+                    <feMergeNode in="black" />
+                    <feMergeNode in="REDTXT_COMP_20" />
+                    <feMergeNode in="REDTXT_OFFSET_30" />
+                </feMerge>
+                <feImage preserveAspectRatio="none" id="mask-r" result="REDTXT_IMG_50" xlink:href="#glitchmask-r" />
+                <feComposite in2="REDTXT_IMG_50" in="REDTXT_MERGE_40" operator="out" result="REDTXT_COMP_60" />
+                <!-- red text end -->
+
+                <!-- green text start -->
+                <feFlood flood-color="limegreen" result="GREENTXT_FLOOD_10" />
+                <feComposite operator="in" in="GREENTXT_FLOOD_10" in2="SourceAlpha" result="GREENTXT_COMP_20" />
+                <feOffset in="SourceGraphic" dx="2" dy="0" result="GREENTXT_OFFSET_30" />
+                <feMerge result="GREENTXT_MERGE_40">
+                    <feMergeNode in="black" />
+                    <feMergeNode in="GREENTXT_COMP_20" />
+                    <feMergeNode in="GREENTXT_OFFSET_30" />
+                </feMerge>
+                <feImage preserveAspectRatio="none" id="mask-g" result="GREENTXT_IMG_50" xlink:href="#glitchmask-g" />
+                <feComposite in2="GREENTXT_IMG_50" in="GREENTXT_MERGE_40" operator="out" result="GREENTXT_COMP_60" />
+                <!-- green text end -->
+
+                <feMerge result="MERGE_10">
+                    <feMergeNode in="SourceGraphic" />
+                    <feMergeNode in="REDTXT_COMP_60" />
+                    <feMergeNode in="GREENTXT_COMP_60" />
+                </feMerge>
+            </filter>
+        </defs>
+    </svg>
+<figure class="glitch-filter-example">
+    <svg class="glitch-filter-example__demo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
+        <text class="glitch-filter-example__filtered-text" y="50%" text-anchor="middle" x="50%" transform="translate(0 34)">SVG text</text>
+    </svg>
+</figure>
+
+
+  <script>
+  
+  (function(){
+	var ua = navigator.userAgent;
+
+	if(!/firefox/gi.test(ua)){return;}
+	// Browsersniffing. Yes, I'm lazy.
+
+	var fragmentID;
+	var feImgs = document.querySelectorAll("feImage");
+	var cssList = document.styleSheets;
+	var cssAnimations = {};
+
+	for (var i = 0; i < cssList.length; i++){
+		var css = cssList[i];
+
+		for (var j = 0; j < css.cssRules.length; j++){
+			var rule = css.cssRules[j];
+
+			//is rule a keyframe animation?
+			if (rule.type === 7){
+				cssAnimations[rule.name] = rule.cssText;
+			}
+		}
+	}
+			
+	for (var i=0, j=feImgs.length; i<j; i++) {
+		fragmentID = feImgs[i].getAttribute("xlink:href") || feImgs[i].getAttribute("xlink");
+
+		if(/#/.test(fragmentID) && !/data\:image\/svg\+xml/.test(fragmentID)){
+			fragmentAsURIintoFilter(fragmentID, feImgs[i]);
+		};
+	}
+
+	function fragmentAsURIintoFilter(identifier, fePrimitive){
+		var el = document.querySelector(identifier);
+		var styledEl = inlineStyles(el);
+		var nsAttr = "http://www.w3.org/2000/svg";
+		if ( !styledEl.getAttribute("xmlns" )){
+			styledEl.setAttribute("xmlns", nsAttr);
+		}
+        var text = encodeURIComponent(styledEl.outerHTML.replace(/100%/g, "256")).replace("\"", "\'");
+		var target = fePrimitive;
+
+		target.setAttribute("xlink:href", "data:image/svg+xml;charset=utf-8," + text);
+	}
+
+	// When URLencoded, global styles will no longer apply to the SVG Fragment. So we must inline every rule before:
+	function inlineStyles (element) {
+		var children = element.querySelectorAll("*");
+		var animations = [];
+
+		[].forEach.call(children, function(child){
+			var style = getComputedStyle(child);
+			child.cssText = style;
+
+			// Look for animations:
+			for (var i = 0; i < style.length; i++) {
+				var prop = style.item(i);
+				var rule = style.getPropertyValue(prop);
+
+				// is there a CSS keyframe animation applied to this element?
+				// Copy it to an inlined style.
+				if( /animation\-name/.test(prop) && rule !=="none") {
+					if(animations.toString().indexOf(rule) < 0) {
+						var svgStyle = document.createElement( 'style' );
+
+						svgStyle.innerHTML = cssAnimations[rule];
+						element.appendChild(svgStyle);
+						animations.push(rule);
+					}
+				}
+
+				child.style[prop] = rule;			
+			}
+		});
+
+		return element;
+	}
+})();
+  
+  </script>
+
+</body>
+</html>

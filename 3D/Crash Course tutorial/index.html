@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+    
+        * {
+            box-sizing: inherit;
+        }
+    
+        body {
+            margin: 0;
+            color: white;
+            background-color: #777;
+    
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+    
+            box-sizing: border-box;
+        }
+    </style>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/three.min.js"></script>
+    <!-- <script src="js/dat.gui.min.js"></script> -->
+    <script src="js/TweenMax.min.js"></script>
+
+    <script>
+        const init = () => {
+            // THREE.js
+            const scene = new THREE.Scene()
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight,.1,1000)
+            const renderer = new THREE.WebGLRenderer( {antialias: true} )
+
+            // CAMERA SETUP
+            camera.position.x = -2
+            camera.position.y = 0
+            camera.position.z = 10
+
+            // RENDERER SETUP
+            renderer.setClearColor('#333')   // Color of scene
+            renderer.setSize(window.innerWidth, window.innerHeight)
+        
+            $('body').append(renderer.domElement)
+            
+            // RESPONSIVNESS SETUP
+            window.addEventListener('resize', () => {   // Makes size of scene and camera responsive 
+                renderer.setSize(window.innerWidth, window.innerHeight)
+                camera.aspect = window.innerWidth / window.innerHeight
+
+                camera.updateProjectionMatrix()       // Updates camera properties when changed - FIX !!!
+            })
+
+            //
+            const raycaster = new THREE.Raycaster()
+            const mouse = new THREE.Vector2()
+
+            // FIGURES SETUP
+                // SPHERE
+            const sphereGeometry = new THREE.SphereGeometry(1, 10, 10)
+            const sphereMaterial = new THREE.MeshLambertMaterial( {color: 0xFFCC00} )
+            const sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial) // Creates element's mesh based on settings above
+                    // POSITION
+            sphereMesh.position.x = -1
+            sphereMesh.position.y = 3
+            sphereMesh.position.z = 1
+                    // ROTATION
+            sphereMesh.rotation.set(45, 20, -10) // x, y, z
+                    // SCALE
+            sphereMesh.scale.set(1.5, .5, 1)   // z, y, z
+
+                // CUBE
+            const boxGeometry = new THREE.BoxGeometry(1, 1, 1)
+            const boxMaterial = new THREE.MeshLambertMaterial({ color: 'red' })
+            const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial) // Creates element's mesh based on settings above
+                    // POSITION
+            boxMesh.position.x = 0
+            boxMesh.position.y = 1
+            boxMesh.position.z = 1.5
+
+                    // ROTATION
+            boxMesh.rotation.set(10, 15, 0) // x, y, z
+
+            meshX = -10
+            for (let i = 0; i < 15; i++) {
+                const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial)
+                boxMesh.position.x = (Math.random() - .5) * 10
+                boxMesh.position.y = (Math.random() - .5) * 10
+                boxMesh.position.z = (Math.random() - .5) * 10
+                scene.add(boxMesh)
+                meshX += 1
+            }
+
+            // LIGHT SETUP
+            const light = new THREE.PointLight(0xFFFFFF, 1, 500)
+            light.position.set(-10, 10, 25) // x, y, z
+
+            scene.add(sphereMesh, boxMesh, light) // Adds created element to scene (there is ability to add elements separatedly on all at once)
+
+            // RENDER FINAL VIEW
+            const render = () => {  
+                requestAnimationFrame(render)   // Calls passed function each time when screen is refreshed (typically 60Hz - 60 times per second) 
+
+                // rotate360(boxMesh, 0.01, 0.05, 0)
+                rotate360(sphereMesh, 0.02, 0.01, 0.05)
+
+                renderer.render(scene, camera)
+            }
+            
+            // FUNCTIONS
+                // ROTATION FUNCTION
+            const rotate360 = (mesh, x, y, z) => {
+                mesh.rotation.x += x
+                mesh.rotation.y += y
+                mesh.rotation.z += z
+            }
+
+            render()
+
+            // TweenMax.js
+            this.tl = new TimelineMax({ paused:true })
+            this.tl.to(boxMesh.scale, 1, {x: 2, ease: Expo.easeOut})
+            this.tl.to(boxMesh.scale, .5, { x: .5, ease: Expo.easeOut })
+            this.tl.to(boxMesh.position, .5, { y: 1, ease: Expo.easeOut })
+            this.tl.to(boxMesh.rotation, .5, { y: Math.PI*.5, ease: Expo.easeOut }, '=-1.5')
+
+            // EVENT LISTENERS
+            window.addEventListener('mousemove', () => this.tl.play())
+        }
+
+        init()
+    </script>
+</body>
+</html>

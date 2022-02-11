@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        font-size: 62.5%;
+    }
+
+    body {
+        font-family: sans-serif;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .container .column {
+        width: 25%;
+        height: 100%;
+        float: left;
+        border: 2px solid rgba(0,0,0,.5);
+    }
+
+    .container .column:last-child {
+        border-right: none;
+    }
+
+    .container .column .content {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .container .column .content h1 {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        background-color: rgba(0,0,0,.1);
+        text-align: center;
+        color: rgba(255,255,255,.2);
+        font-size: 15rem;
+        border-top: 2px solid rgba(0,0,0,.5);
+        border-bottom: 2px solid rgba(0,0,0,.5);
+    }
+
+    .container .column .content .box {
+        position: absolute;
+        top: 50%;
+        transform: translateY(100%);
+        padding: 4rem;
+        background-color: #fff;
+        text-align: center;
+        transition-duration: .5s;
+        opacity: 0;
+    }
+
+    .container .column.active .content .box {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+
+    .container .column .content .box h2 {
+        font-size: 3rem;
+        color: #262626;
+    }
+
+    .container .column .content .box p {
+        font-size: 1.8rem;
+        color: #262626;
+    }
+
+    .container .column.active .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        transition-duration: .5s;
+    }
+
+    .container .column .bg.bg1 { background-image: url(1.jpg); }
+    .container .column .bg.bg2 { background-image: url(2.jpg); }
+    .container .column .bg.bg3 { background-image: url(3.jpg); }
+    .container .column .bg.bg4 { background-image: url(4.jpg); }
+    
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="column active">
+            <div class="content">
+                <h1>1</h1>
+                <div class="box">
+                    <h2>What is lorem ipsum</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, odit? Rem, ut. Distinctio rem a illum laudantium sunt quae explicabo, iure laboriosam? Sapiente, fugiat libero autem atque quaerat nesciunt aspernatur optio illum! Sit accusamus iure quas deserunt voluptatum voluptates laboriosam dolores, odio eveniet est autem, aliquam quaerat modi, ipsum delectus.</p>
+                </div>
+            </div>
+            <div class="bg bg1"></div>
+        </div>
+        <div class="column">
+            <div class="content">
+                <h1>2</h1>
+                <div class="box">
+                    <h2>What is lorem ipsum</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, odit? Rem, ut. Distinctio rem a illum laudantium sunt quae explicabo, iure laboriosam? Sapiente, fugiat libero autem atque quaerat nesciunt aspernatur optio illum! Sit accusamus iure quas deserunt voluptatum voluptates laboriosam dolores, odio eveniet est autem, aliquam quaerat modi, ipsum delectus.</p>
+                </div>
+            </div>
+            <div class="bg bg2"></div>
+        </div>
+        <div class="column">
+            <div class="content">
+                <h1>3</h1>
+                <div class="box">
+                    <h2>What is lorem ipsum</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, odit? Rem, ut. Distinctio rem a illum laudantium sunt quae explicabo, iure laboriosam? Sapiente, fugiat libero autem atque quaerat nesciunt aspernatur optio illum! Sit accusamus iure quas deserunt voluptatum voluptates laboriosam dolores, odio eveniet est autem, aliquam quaerat modi, ipsum delectus.</p>
+                </div>
+            </div>
+            <div class="bg bg3"></div>
+        </div>
+        <div class="column">
+            <div class="content">
+                <h1>4</h1>
+                <div class="box">
+                    <h2>What is lorem ipsum</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, odit? Rem, ut. Distinctio rem a illum laudantium sunt quae explicabo, iure laboriosam? Sapiente, fugiat libero autem atque quaerat nesciunt aspernatur optio illum! Sit accusamus iure quas deserunt voluptatum voluptates laboriosam dolores, odio eveniet est autem, aliquam quaerat modi, ipsum delectus.</p>
+                </div>
+            </div>
+            <div class="bg bg4"></div>
+        </div>
+    </div>
+
+    <script src="jQuery.min.js"></script>
+
+    <script>
+    
+    $(document).ready(() => {
+        $(document).on('mouseover', '.container .column', function() {
+            $(this).addClass('active').siblings().removeClass('active')
+        })
+    })
+    
+    </script>
+</body>
+</html>

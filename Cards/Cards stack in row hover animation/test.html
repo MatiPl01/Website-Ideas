@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* Global reset */
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            box-sizing: border-box;
+            background-color: #333;
+            min-height: 100vh;
+            padding-top: 8rem;
+        }
+
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: inherit;
+        }
+
+        /* Styles */
+        .section-cards {
+            margin: 0 8rem;
+            margin-right: 0;
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 20rem;
+
+            /* perspective: 100rem; */
+        }
+
+        .card {
+            background: linear-gradient(to right bottom, #222, #111) #111;
+            min-height: 40rem;
+            min-width: 30rem;
+            box-shadow: -1.5rem 1rem 2rem rgba(0,0,0,.5);
+            border-radius: 1.5rem;
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+
+            transition: all .3s ease-in-out;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            transform: skewY(-15deg) translateY(-120%);
+            background-image: linear-gradient(transparent, rgba(255,255,255,.15), transparent);
+            height: 40%;
+        }
+
+        .card::after {
+            content: '';
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: -1;
+        }
+
+        .card:hover {
+            transform: translate(-2.5rem, -1rem) scale(1.05);
+            box-shadow: -1.5rem 1rem 3rem rgba(0,0,0,.8);
+        }
+
+        .card:hover::before {
+            animation: glow-up-down .4s;
+        }
+
+        /* All cards that are before the hovered one */
+        .section-cards:hover > .card:not(:hover) {
+            transform: translate(-1rem, .5rem);
+        }
+
+        .section-cards:hover > .card:not(:hover)::after {
+            background: linear-gradient(to right bottom, rgb(211, 10, 60), rgb(144, 11, 185), rgb(49, 1, 126)) rgb(144, 11, 185);
+            opacity: 1;
+        }
+
+        /* All cards that are after the hovered one */
+        .section-cards:hover > .card:hover ~ .card {
+            transform: translate(8rem, .5rem);
+        }
+
+        .section-cards:hover > .card:hover ~ .card::after {
+            background: linear-gradient(to right bottom, rgb(216, 185, 9), rgb(209, 114, 5), rgb(185, 81, 11)) rgb(209, 114, 5);
+        }
+
+        @keyframes glow-up-down {
+            to {
+                transform: skewY(-15deg) translateY(300%);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <section class="section-cards">
+        <div class="card">ab</div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+    </section>
+</body>
+</html>

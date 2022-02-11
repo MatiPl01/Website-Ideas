@@ -1,0 +1,64 @@
+// COLORS
+    
+    $color-primary: #47c5ff;
+    $shadow-color-dark-1: #111;
+
+    // PAGINATION
+    $color-bullet--active: #111;
+    $color-pagination--inside: #47c5ff;
+    $color-pagination--outside: #111;
+
+html {
+    font-size: 62.5%; /* 1rem === 10px */
+}
+
+body {
+    background-image: radial-gradient($color-primary, black);
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper {
+    &-container {
+        width: 100%;
+        height: 100vh;
+    }
+
+    &-slide {
+        background-color: transparent;
+        /* Center slide text vertically */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &-pagination {
+        padding: .5rem;
+        background-image: radial-gradient($color-pagination--inside, darken($color-pagination--inside, 20%));
+        border-radius: 5rem;
+        border: 2px solid $color-pagination--outside;
+        box-shadow: 0 0 1rem $shadow-color-dark-1,
+                    0 0 1rem inset $shadow-color-dark-1;
+        
+        &-bullet {
+            &-active {
+                background-color: $color-bullet--active;
+                
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}
+
+

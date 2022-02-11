@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scrolling mouse</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<body>
+    <div class="container">
+    
+        <svg viewBox="0 0 1800 300"> <!-- MODIFY WHEN CHANGING NUMBER OF LETTERS -->
+            <g>
+                <text id="hand-written">
+                    <tspan y="150">
+                        <tspan>a</tspan>
+                        <tspan>W</tspan>
+                        <tspan>e</tspan>
+                        <tspan>b</tspan>
+                        <tspan>D</tspan>
+                        <tspan>e</tspan>
+                        <tspan>s</tspan>
+                        <tspan>i</tspan>
+                        <tspan>g</tspan>
+                        <tspan>n</tspan>
+                        <tspan>e</tspan>
+                        <tspan>r</tspan>
+                        <tspan>M</tspan>
+                        <tspan>a</tspan>
+                        <tspan>g</tspan>
+                    </tspan>
+                </text>
+            </g>
+        </svg>
+    
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <script>
+    
+        $(document).ready(() => {
+
+            // const handWritten = $('#hand-written')
+            // const letters = handWritten.text().trim().split('')
+            // handWritten.text('')
+
+            // const textDOM = $('<tspan></tspan>')
+            //     .attr('class', 'draw')
+            //     .attr('y', '150')
+
+            // for (let i = 0; i < letters.length; i++) {
+            //     const letterDOM = $('<tspan></tspan>')
+            //         .text(letters[i])
+            //         .css('animation-delay', `${.15 * i}s`)
+            //     textDOM.append(letterDOM)
+            // }
+
+            // handWritten.append(textDOM)
+            // console.log(textDOM)
+        })
+
+    </script>
+
+</body>
+</html>
